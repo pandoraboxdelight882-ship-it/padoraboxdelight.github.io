@@ -1,75 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home | Padora Box Delight</title>
-  <meta name="description" content="Padora Box Delight responsive food ordering website." />
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Padora Box Delight</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #130814, #2b1230, #070307);
+      color: white;
+    }
+
+    header {
+      padding: 20px;
+      background: rgba(0,0,0,0.4);
+      position: sticky;
+      top: 0;
+    }
+
+    .brand {
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffd166;
+    }
+
+    .hero {
+      padding: 80px 25px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      margin-bottom: 15px;
+      color: #ff5cc8;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff5cc8, #ffd166);
+      color: #180617;
+      padding: 15px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 8px;
+    }
+
+    .section {
+      padding: 50px 25px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section h2 {
+      color: #ffd166;
+      font-size: 34px;
+      text-align: center;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    .card h3 {
+      color: #ff5cc8;
+    }
+
+    .card p {
+      color: #e5cbe4;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #e5cbe4;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    @media (max-width: 800px) {
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .menu {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="container navwrap">
-      <a class="brand" href="/index.html"><span class="brand-badge">P</span><span>Padora Box Delight</span></a>
-      <button class="menu-toggle" id="menuToggle">☰</button>
-      <nav class="nav" id="mainNav">
-        <a href="/index.html">Home</a>
-        <a href="/menu.html">Menu</a>
-        <a href="/order.html">Order <span data-cart-count>0</span></a>
-        <a href="/reviews.html">Reviews</a>
-        <a href="/support.html">AI Care</a>
-        <a class="pill" href="/order.html">Order Now</a>
-      </nav>
-    </div>
+  <header>
+    <div class="brand">Padora Box Delight</div>
   </header>
-  
-<main id="top">
-  <section class="container hero">
-    <div>
-      <p class="kicker">Classic baddie food experience</p>
-      <h1>Luxury bites, sweet moments.</h1>
-      <p>Padora Box Delight is your stylish outdoor kiosk for pizza, shawarma, pastries, chicken, gelato, smoothies, cocktails, parfait, Greek yoghurt and cotton candy.</p>
-      <div class="actions">
-        <a class="btn primary" href="/menu.html">Explore Menu</a>
-        <a class="btn secondary" href="/support.html">Chat with Customer Care</a>
+
+  <section class="hero">
+    <h1>Luxury bites, sweet moments.</h1>
+    <p>
+      Welcome to Padora Box Delight — your classic baddie luxury food kiosk for pizza,
+      shawarma, waffles, doughnuts, burgers, gelato, smoothies, cocktails, parfait,
+      Greek yoghurt and cotton candy.
+    </p>
+
+    <a class="btn" href="#menu">View Menu</a>
+    <a class="btn" href="https://wa.me/2340000000000?text=Hello%20Padora%20Box%20Delight%2C%20I%20want%20to%20place%20an%20order" target="_blank">
+      Order on WhatsApp
+    </a>
+  </section>
+
+  <section class="section" id="menu">
+    <h2>Our Menu</h2>
+
+    <div class="menu">
+      <div class="card">
+        <h3>Elite Padora Pizza</h3>
+        <p>Cheesy pizza with chicken, beef, sausage and colourful toppings.</p>
+        <strong>From ₦___</strong>
+      </div>
+
+      <div class="card">
+        <h3>Shawarma</h3>
+        <p>Chicken or beef shawarma with sausage, veggies and creamy sauce.</p>
+        <strong>From ₦___</strong>
+      </div>
+
+      <div class="card">
+        <h3>Burger</h3>
+        <p>Classic burger with cheese, lettuce, tomato and Padora sauce.</p>
+        <strong>From ₦___</strong>
+      </div>
+
+      <div class="card">
+        <h3>Waffles & Doughnuts</h3>
+        <p>Sweet pastries served fresh with toppings and sauces.</p>
+        <strong>From ₦___</strong>
+      </div>
+
+      <div class="card">
+        <h3>Gelato & Desserts</h3>
+        <p>6-flavour gelato, parfait, Greek yoghurt, brownies and cotton candy.</p>
+        <strong>From ₦___</strong>
+      </div>
+
+      <div class="card">
+        <h3>Drinks</h3>
+        <p>Smoothies, fruit juice, milkshakes, cocktails, mocktails and margarita.</p>
+        <strong>From ₦___</strong>
       </div>
     </div>
-    <div class="luxe-card">
-      <p class="kicker">Opening promo</p>
-      <h2>Elite Padora Pizza</h2>
-      <p>Buy one, get one free. Add your promo rules before launch.</p>
-      <div class="emoji">🍕 🍦 🍹 ✨</div>
+  </section>
+
+  <section class="section">
+    <h2>Customer Care</h2>
+    <div class="card">
+      <h3>Need help?</h3>
+      <p>
+        Message us on WhatsApp to ask about prices, delivery, pickup, special offers,
+        bulk orders and birthday packages.
+      </p>
+      <a class="btn" href="https://wa.me/2340000000000?text=Hello%20Padora%20Box%20Delight%2C%20I%20need%20help" target="_blank">
+        Chat Customer Care
+      </a>
     </div>
   </section>
 
-  <section class="container strip">
-    <div class="card"><strong>Order fast</strong><span>Customers click a menu page, add items, then send order through checkout.</span></div>
-    <div class="card"><strong>Luxury look</strong><span>Pink, black, gold, glassy, mature and baddie design for your brand.</span></div>
-    <div class="card"><strong>Payment ready</strong><span>Prepared for Flutterwave, bank transfer, Paystack, crypto/manual options.</span></div>
-  </section>
-
-  <section class="container section">
-    <div class="section-head"><p class="kicker">Main course pages</p><h2>Each category has its own page</h2></div>
-    <div class="course-grid">
-      <a class="course-card" href="/pages/pizza.html"><div class="course-icon">🍕</div><h3>Pizza</h3><p>Elite Padora Pizza and offers.</p></a>
-      <a class="course-card" href="/pages/shawarma.html"><div class="course-icon">🌯</div><h3>Shawarma</h3><p>Chicken and beef shawarma.</p></a>
-      <a class="course-card" href="/pages/burger.html"><div class="course-icon">🍔</div><h3>Burger</h3><p>Classic burger meals.</p></a>
-      <a class="course-card" href="/pages/chicken.html"><div class="course-icon">🍗</div><h3>Chicken</h3><p>Chicken & chips and roasted chicken.</p></a>
-      <a class="course-card" href="/pages/pastries.html"><div class="course-icon">🧇</div><h3>Pastries</h3><p>Waffles, doughnuts and meat pie.</p></a>
-      <a class="course-card" href="/pages/gelato.html"><div class="course-icon">🍦</div><h3>Desserts</h3><p>Gelato, parfait, yoghurt, brownies and cotton candy.</p></a>
-      <a class="course-card" href="/pages/drinks.html"><div class="course-icon">🍹</div><h3>Drinks</h3><p>Smoothies, juice, milkshake, cocktail and margarita.</p></a>
-      <a class="course-card" href="/reviews.html"><div class="course-icon">⭐</div><h3>Reviews</h3><p>Customer feedback and testimonials.</p></a>
-      <a class="course-card" href="/support.html"><div class="course-icon">🤖</div><h3>AI Care</h3><p>Customer-care chatbot and live support setup.</p></a>
-    </div>
-  </section>
-</main>
-
-  <a class="float-cart" href="/order.html">Order List: <span data-cart-count>0</span></a>
-  <a class="float-top" href="#top">↑ Top</a>
-  <footer class="footer"><div class="container">© <span id="year"></span> Padora Box Delight. Luxury bites, sweet moments.</div></footer>
-  <script src="/assets/js/app.js"></script>
-  <script src="/assets/js/cart.js"></script>
-  
+  <footer>
+    © 2026 Padora Box Delight. All rights reserved.
+  </footer>
 </body>
 </html>
