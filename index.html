@@ -1,201 +1,2362 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pandora Box Delight</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pandora Box Delight | Luxury Bites, Sweet Moments</title>
+  <meta name="description" content="Pandora Box Delight premium food website: pizza, shawarma, chicken, pastries, desserts, gelato, drinks, edibles, checkout, reviews and customer care." />
+
+  <!--
+    IMAGE PLACEHOLDERS TO CREATE ON GITHUB:
+    assets/images/logo.png          -> your logo, appears in the header of every page
+    assets/images/pizza.jpg    -> realistic appetizing combined food hero for homepage
+    assets/images/pizza.jpg         -> pizza page image
+    assets/images/shawarma.jpg      -> shawarma page image
+    assets/images/chicken.jpg       -> crispy chicken page image
+    assets/images/pastries.jpg      -> waffles/doughnuts/meat pie page image
+    assets/images/dessert.jpg       -> parfait/Greek yoghurt/cotton candy page image
+    assets/images/gelato.jpg        -> 6-flavour gelato page image
+    assets/images/drinks.jpg        -> cocktails/mocktails/drinks page image
+    assets/images/smoothie.jpg      -> smoothie feature image
+    assets/images/kiosk.jpg         -> kiosk image for About Us / Visit Us / Map page
+    assets/images/edibles.jpg       -> brownies/gummies/special treats page image
+
+    NOTE: Your current images contain “Pandora” inside the artwork.
+    The website text below uses the corrected spelling: “Pandora”.
+  -->
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #130814, #2b1230, #070307);
-      color: white;
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Great+Vibes&family=Playfair+Display:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+    :root {
+      --bg: #070207;
+      --bg-soft: #130716;
+      --panel: rgba(255, 255, 255, 0.075);
+      --panel-strong: rgba(255, 255, 255, 0.12);
+      --pink: #ff4fc3;
+      --pink-soft: #ffb3e6;
+      --gold: #ffd166;
+      --cream: #fff7fb;
+      --muted: #dec5df;
+      --line: rgba(255,255,255,0.14);
+      --shadow: 0 25px 80px rgba(0,0,0,0.42);
+      --radius: 30px;
     }
 
-    header {
-      padding: 20px;
-      background: rgba(0,0,0,0.4);
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--cream);
+      font-family: "Poppins", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(255, 79, 195, 0.28), transparent 28%),
+        radial-gradient(circle at 85% 12%, rgba(255, 209, 102, 0.16), transparent 25%),
+        linear-gradient(135deg, #040204, var(--bg-soft) 42%, #050205);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), transparent 88%);
+      z-index: -1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font-family: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(1180px, 92%); margin: auto; }
+
+    .topbar {
       position: sticky;
       top: 0;
+      z-index: 100;
+      background: rgba(8, 3, 9, 0.82);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+
+    .navwrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0;
     }
 
     .brand {
-      font-size: 24px;
-      font-weight: bold;
-      color: #ffd166;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      min-width: 230px;
     }
 
-    .hero {
-      padding: 80px 25px;
-      text-align: center;
+    .logo-img, .fallback-logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 209, 102, .45);
+      box-shadow: 0 0 34px rgba(255, 79, 195, .45);
+      background: linear-gradient(135deg, var(--pink), var(--gold));
     }
 
-    .hero h1 {
-      font-size: 50px;
-      margin-bottom: 15px;
-      color: #ff5cc8;
-    }
+    .logo-img { object-fit: cover; }
+    .fallback-logo { display: none; place-items: center; color:#160617; font-weight:900; }
 
-    .hero p {
-      font-size: 20px;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      line-height: 1.6;
-    }
+    .brand-title { display: grid; line-height: 1; }
+    .brand-title strong { font-family: "Playfair Display", serif; font-size: 1.05rem; letter-spacing: .4px; }
+    .brand-title small { color: var(--gold); font-size: .7rem; letter-spacing: 1.6px; text-transform: uppercase; margin-top: 5px; }
 
-    .btn {
+    .nav { display: flex; align-items: center; gap: 15px; font-size: .92rem; }
+    .nav a { color: var(--muted); cursor: pointer; white-space: nowrap; transition: .2s ease; }
+    .nav a:hover { color: var(--cream); }
+    .nav .pill { color: #160617; padding: 10px 16px; border-radius: 999px; background: linear-gradient(135deg, var(--pink), var(--gold)); font-weight: 900; }
+
+    .menu-toggle { display: none; background: transparent; border: 0; color: var(--cream); font-size: 30px; cursor: pointer; }
+    .page { display: none; }
+    .page.active { display: block; animation: pageFade .35s ease; }
+
+    @keyframes pageFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .kicker { color: var(--gold); font-size: .78rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; margin: 0 0 10px; }
+    h1, h2, h3 { margin-top: 0; }
+    h1 { font-family: "Playfair Display", serif; font-size: clamp(3.1rem, 7vw, 7.2rem); line-height: .9; letter-spacing: -3px; margin-bottom: 22px; }
+    h2 { font-family: "Playfair Display", serif; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1; letter-spacing: -1px; margin-bottom: 14px; }
+    h3 { font-family: "Cinzel", serif; letter-spacing: .4px; margin-bottom: 10px; }
+    p { color: var(--muted); line-height: 1.75; font-size: 1rem; }
+    .script-word { font-family: "Great Vibes", cursive; font-weight: 400; color: var(--pink-soft); text-shadow: 0 0 26px rgba(255, 79, 195, .45); letter-spacing: 0; }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; border: 1px solid transparent; border-radius: 999px; padding: 14px 22px; font-weight: 900; cursor: pointer; transition: .18s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 45px rgba(255, 79, 195, .2); }
+    .btn.primary { background: linear-gradient(135deg, var(--pink), var(--gold)); color: #160617; }
+    .btn.secondary { background: rgba(255,255,255,.06); color: var(--cream); border-color: var(--line); }
+    .btn.danger { background: rgba(255,87,87,.14); border-color: rgba(255,87,87,.35); color: #ffdede; }
+
+    .hero-home { min-height: 88vh; padding: 62px 0 50px; display: grid; grid-template-columns: .95fr 1.05fr; gap: 34px; align-items: center; }
+    .hero-copy p { max-width: 720px; font-size: 1.06rem; }
+    .hero-mini { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .mini-pill { padding: 8px 12px; border: 1px solid rgba(255, 209, 102, .25); background: rgba(255,255,255,.055); border-radius: 999px; font-size: .82rem; color: var(--muted); }
+
+    .food-showcase { display: grid; grid-template-columns: 1.2fr .8fr; grid-template-rows: 265px 190px; gap: 14px; }
+    .food-shot { position: relative; overflow: hidden; border-radius: 30px; background: rgba(255,255,255,.08); border: 1px solid var(--line); box-shadow: var(--shadow); min-height: 180px; }
+    .food-shot img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.05) contrast(1.05); }
+    .food-shot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.72), transparent 58%); }
+    .food-shot .label { position: absolute; left: 18px; right: 18px; bottom: 16px; z-index: 2; }
+    .food-shot .label strong { display: block; font-family: "Playfair Display", serif; font-size: 1.25rem; }
+    .food-shot .label span { color: var(--gold); font-size: .8rem; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; }
+    .food-shot.main { grid-row: span 2; }
+
+    .logo-watermark { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; padding: 10px 14px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid var(--line); color: var(--gold); font-weight: 800; font-size: .9rem; }
+    .logo-watermark img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
+
+    .section { padding: 68px 0; }
+    .section-head { max-width: 780px; margin-bottom: 28px; }
+    .grid2, .grid3, .grid4, .menu-grid, .checkout-grid { display: grid; gap: 18px; }
+    .grid2 { grid-template-columns: repeat(2, 1fr); }
+    .grid3 { grid-template-columns: repeat(3, 1fr); }
+    .grid4 { grid-template-columns: repeat(4, 1fr); }
+    .menu-grid { grid-template-columns: repeat(3, 1fr); }
+    .checkout-grid { grid-template-columns: 1.08fr .92fr; align-items: start; }
+
+    .card, .course-card, .product-card, .checkout-panel, .review-card, .notice, .bot-panel, .image-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .card, .course-card, .product-card, .checkout-panel, .review-card, .notice, .bot-panel { padding: 24px; }
+    .course-card, .product-card, .review-card { transition: .22s ease; }
+    .course-card:hover, .product-card:hover, .review-card:hover { transform: translateY(-5px); border-color: rgba(255, 79, 195, .65); }
+    .course-card { min-height: 290px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
+    .course-card .thumb { height: 145px; margin: -24px -24px 18px; overflow: hidden; position: relative; }
+    .course-card .thumb img, .image-card img, .page-media img { width: 100%; height: 100%; object-fit: cover; }
+    .course-card .thumb::after, .image-card::after, .page-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.68), transparent 60%); pointer-events: none; }
+    .course-icon { font-size: 2rem; margin-bottom: 8px; }
+
+    .page-hero { min-height: 66vh; padding: 52px 0; display: grid; grid-template-columns: .92fr 1.08fr; gap: 30px; align-items: center; }
+    .page-media { height: 520px; border-radius: 38px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); position: relative; background: rgba(255,255,255,.06); }
+    .page-media .float-label { position: absolute; left: 22px; right: 22px; bottom: 22px; z-index: 3; padding: 18px; border-radius: 24px; background: rgba(0,0,0,.42); border: 1px solid rgba(255,255,255,.16); backdrop-filter: blur(8px); }
+    .page-media .float-label strong { font-family: "Playfair Display", serif; font-size: 1.5rem; }
+
+    .option-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 22px; }
+    .option-box { padding: 14px; border-radius: 20px; background: rgba(255,255,255,.06); border: 1px solid var(--line); }
+    .option-box strong { color: var(--gold); }
+
+    .taglist { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 14px; }
+    .tag { padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.09); color: var(--pink-soft); font-size: .77rem; font-weight: 800; }
+    .product-card { display: flex; flex-direction: column; min-height: 240px; }
+    .qtyrow { margin-top: auto; display: flex; align-items: center; gap: 8px; }
+    .qtyrow input { width: 72px; border-radius: 14px; border: 1px solid var(--line); background: rgba(0,0,0,.18); color: var(--cream); padding: 11px; }
+    .addbtn { border: 0; border-radius: 14px; padding: 12px 14px; background: linear-gradient(135deg, var(--pink), var(--gold)); color: #170617; font-weight: 900; cursor: pointer; }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+    .filter { border: 1px solid var(--line); background: rgba(255,255,255,.06); color: var(--cream); border-radius: 999px; padding: 10px 14px; cursor: pointer; font-weight: 800; }
+    .filter.active { background: var(--pink); color: #170617; }
+    .breadcrumb { color: var(--muted); margin: 26px 0 0; }
+    .breadcrumb span { color: var(--gold); cursor: pointer; }
+
+    input, textarea, select { width: 100%; border-radius: 16px; border: 1px solid var(--line); background: rgba(255,255,255,.07); color: var(--cream); padding: 14px; outline: none; }
+    select option { color: #111; }
+    textarea { min-height: 105px; resize: vertical; }
+    .form-grid { display: grid; gap: 12px; }
+    .cart-item { display: flex; justify-content: space-between; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .payment-option { border: 1px solid var(--line); border-radius: 20px; padding: 18px; background: rgba(255,255,255,.055); margin-bottom: 12px; }
+    .warn { border-color: rgba(255,209,102,.34); background: rgba(255,209,102,.075); }
+    .success { border-color: rgba(37,211,102,.34); background: rgba(37,211,102,.075); }
+
+    .bot-window { border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: rgba(0,0,0,.2); }
+    .bot-head { padding: 16px; background: linear-gradient(135deg, rgba(255,79,195,.32), rgba(255,209,102,.18)); font-weight: 900; }
+    .bot-messages { min-height: 260px; max-height: 350px; overflow-y: auto; padding: 16px; display: grid; gap: 12px; }
+    .msg { max-width: 86%; padding: 12px 14px; border-radius: 18px; background: rgba(255,255,255,.09); color: var(--muted); line-height: 1.55; }
+    .msg.me { margin-left: auto; background: rgba(255,79,195,.18); color: var(--cream); }
+    .bot-input-row { display: flex; gap: 8px; padding: 14px; border-top: 1px solid var(--line); }
+
+    .map-placeholder { min-height: 340px; border-radius: 30px; background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.75)), radial-gradient(circle at 30% 30%, rgba(255,79,195,.25), transparent 35%), radial-gradient(circle at 70% 65%, rgba(255,209,102,.2), transparent 32%), #171017; display: grid; place-items: center; text-align: center; padding: 30px; border: 1px dashed rgba(255,255,255,.22); }
+
+    .float-cart { position: fixed; right: 18px; bottom: 18px; z-index: 90; padding: 14px 18px; border-radius: 999px; background: #25d366; color: #061f0f; font-weight: 900; box-shadow: var(--shadow); cursor: pointer; border: 0; }
+    .footer { padding: 38px 0; border-top: 1px solid var(--line); color: var(--muted); text-align: center; }
+    .hidden { display: none !important; }
+
+
+    .glow-writeup {
       display: inline-block;
-      background: linear-gradient(135deg, #ff5cc8, #ffd166);
-      color: #180617;
-      padding: 15px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 8px;
+      color: var(--champagne);
+      text-shadow:
+        0 0 8px rgba(255, 209, 102, .65),
+        0 0 18px rgba(255, 79, 195, .45),
+        0 0 34px rgba(255, 79, 195, .22);
     }
 
-    .section {
-      padding: 50px 25px;
-      max-width: 1100px;
-      margin: auto;
+    .glow-headline {
+      text-shadow:
+        0 0 10px rgba(255, 209, 102, .55),
+        0 0 24px rgba(255, 79, 195, .46),
+        0 0 48px rgba(255, 79, 195, .24);
     }
 
-    .section h2 {
-      color: #ffd166;
-      font-size: 34px;
-      text-align: center;
+    .ai-chat-avatar {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 209, 102, .75);
+      box-shadow:
+        0 0 20px rgba(255, 79, 195, .85),
+        0 0 44px rgba(255, 209, 102, .28);
+      background: #140614;
+      animation: avatarPulse 2.5s ease-in-out infinite;
     }
 
-    .menu {
+    @keyframes avatarPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 18px rgba(255,79,195,.7), 0 0 38px rgba(255,209,102,.22); }
+      50% { transform: scale(1.04); box-shadow: 0 0 28px rgba(255,79,195,1), 0 0 58px rgba(255,209,102,.36); }
+    }
+
+    .ai-floating-chat {
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 95;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(8, 3, 9, .72);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    .ai-floating-chat span {
+      color: var(--cream);
+      font-weight: 900;
+      font-size: .86rem;
+      padding-right: 6px;
+    }
+
+    .ai-support-intro {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 16px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+    }
+
+    .edibles-showcase {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 30px;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 22px 0;
     }
 
-    .card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    .edibles-showcase .edible-feature {
+      position: relative;
+      min-height: 270px;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
     }
 
-    .card h3 {
-      color: #ff5cc8;
+    .edibles-showcase .edible-feature.blackbox {
+      grid-column: span 2;
+      min-height: 340px;
     }
 
-    .card p {
-      color: #e5cbe4;
-      line-height: 1.6;
+    .edibles-showcase img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #e5cbe4;
-      border-top: 1px solid rgba(255,255,255,0.15);
+    .edibles-showcase .edible-feature::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.75), transparent 58%);
     }
 
-    @media (max-width: 800px) {
-      .hero h1 {
-        font-size: 38px;
-      }
+    .edibles-showcase .edible-caption {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 18px;
+      z-index: 3;
+    }
 
-      .menu {
+    .edibles-showcase .edible-caption strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 1.45rem;
+      color: var(--cream);
+    }
+
+    .edibles-showcase .edible-caption span {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      font-size: .76rem;
+      font-weight: 900;
+    }
+
+    .elite-black-box-note {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255, 79, 195, .11);
+      border: 1px solid rgba(255, 209, 102, .24);
+      color: var(--muted);
+    }
+
+    @media (max-width: 700px) {
+      .edibles-showcase {
         grid-template-columns: 1fr;
       }
-    }
-  </style>
 
+      .edibles-showcase .edible-feature.blackbox {
+        grid-column: span 1;
+      }
+
+      .ai-floating-chat span {
+        display: none;
+      }
+    }
+
+
+    .home-collage {
+      position: relative;
+      min-height: 610px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      grid-template-rows: 230px 170px 170px;
+      gap: 14px;
+    }
+
+    .combo-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.075);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .combo-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.08) contrast(1.04);
+      transition: transform .35s ease;
+    }
+
+    .combo-tile:hover img {
+      transform: scale(1.05);
+    }
+
+    .combo-tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,.12) 55%, transparent);
+      pointer-events: none;
+    }
+
+    .combo-tile .label {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      z-index: 3;
+    }
+
+    .combo-tile .label span {
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: .72rem;
+    }
+
+    .combo-tile .label strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 1.28rem;
+      color: var(--cream);
+      margin-top: 4px;
+    }
+
+    .combo-main {
+      grid-row: span 2;
+    }
+
+    .combo-wide {
+      grid-column: span 2;
+    }
+
+    .combo-float {
+      position: absolute;
+      width: 37%;
+      right: 7%;
+      top: 39%;
+      transform: rotate(-3deg);
+      min-height: 180px;
+      z-index: 8;
+      border: 2px solid rgba(255, 209, 102, .28);
+    }
+
+    .combo-float::before {
+      content: "✦";
+      position: absolute;
+      right: 18px;
+      top: 12px;
+      z-index: 4;
+      color: var(--gold);
+      font-size: 1.35rem;
+      text-shadow: 0 0 16px rgba(255,209,102,.7);
+    }
+
+
+    .call-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 209, 102, .35);
+      background: rgba(255, 255, 255, .07);
+      color: var(--champagne);
+      font-weight: 900;
+      box-shadow: 0 0 28px rgba(255, 79, 195, .16);
+    }
+
+    .call-line a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .mobile-call-bar {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 76px;
+      z-index: 92;
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .mobile-call-bar a,
+    .mobile-call-bar button {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 12px;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    .mobile-call-bar .call-now {
+      background: linear-gradient(135deg, var(--gold), var(--pink));
+      color: #160617;
+    }
+
+    .mobile-call-bar .chat-now {
+      background: #25d366;
+      color: #061f0f;
+    }
+
+    @media (max-width: 560px) {
+      .mobile-call-bar {
+        display: grid;
+      }
+
+      .float-cart {
+        bottom: 128px;
+      }
+
+      .ai-floating-chat {
+        bottom: 128px;
+      }
+    }
+
+
+    .page-gallery {
+      display: grid;
+      grid-template-columns: 1.25fr .85fr .85fr;
+      gap: 14px;
+      margin: 22px 0 26px;
+    }
+
+    .page-gallery-card {
+      position: relative;
+      min-height: 210px;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.07);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .page-gallery-card.big {
+      grid-row: span 2;
+      min-height: 438px;
+    }
+
+    .page-gallery-card.wide {
+      grid-column: span 2;
+    }
+
+    .page-gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.08) contrast(1.03);
+      transition: transform .35s ease;
+    }
+
+    .page-gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .page-gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.2) 55%, transparent);
+      z-index: 2;
+    }
+
+    .page-gallery-card .gallery-label {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      z-index: 3;
+    }
+
+    .page-gallery-card .gallery-label span {
+      display: block;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: .72rem;
+      font-weight: 900;
+    }
+
+    .page-gallery-card .gallery-label strong {
+      display: block;
+      color: var(--cream);
+      font-family: "Playfair Display", serif;
+      font-size: 1.28rem;
+      margin-top: 4px;
+    }
+
+    .edibles-luxury-layout {
+      display: grid;
+      grid-template-columns: .95fr 1.15fr;
+      gap: 18px;
+      align-items: stretch;
+      margin: 24px 0 28px;
+    }
+
+    .edibles-luxury-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .edibles-luxury-main {
+      min-height: 520px;
+      border-radius: 34px;
+    }
+
+    .edibles-note-glow {
+      color: var(--champagne);
+      text-shadow: 0 0 10px rgba(255,209,102,.58), 0 0 24px rgba(255,79,195,.35);
+      font-weight: 900;
+    }
+
+    @media (max-width: 900px) {
+      .page-gallery,
+      .edibles-luxury-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .page-gallery-card.big,
+      .page-gallery-card.wide,
+      .edibles-luxury-main {
+        grid-row: auto;
+        grid-column: auto;
+        min-height: 260px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-gallery-card,
+      .page-gallery-card.big,
+      .page-gallery-card.wide,
+      .edibles-luxury-main {
+        min-height: 220px;
+        border-radius: 24px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .home-collage {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        min-height: auto;
+      }
+
+      .combo-main,
+      .combo-wide {
+        grid-row: auto;
+        grid-column: auto;
+      }
+
+      .combo-tile {
+        min-height: 240px;
+      }
+
+      .combo-float {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        transform: none;
+        min-height: 240px;
+      }
+    }
+
+
+    .call-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 209, 102, .35);
+      background: rgba(255, 255, 255, .07);
+      color: var(--champagne);
+      font-weight: 900;
+      box-shadow: 0 0 28px rgba(255, 79, 195, .16);
+    }
+
+    .call-line a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .mobile-call-bar {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 76px;
+      z-index: 92;
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .mobile-call-bar a,
+    .mobile-call-bar button {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 12px;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    .mobile-call-bar .call-now {
+      background: linear-gradient(135deg, var(--gold), var(--pink));
+      color: #160617;
+    }
+
+    .mobile-call-bar .chat-now {
+      background: #25d366;
+      color: #061f0f;
+    }
+
+    @media (max-width: 560px) {
+      .mobile-call-bar {
+        display: grid;
+      }
+
+      .float-cart {
+        bottom: 128px;
+      }
+
+      .ai-floating-chat {
+        bottom: 128px;
+      }
+    }
+
+
+    .page-gallery {
+      display: grid;
+      grid-template-columns: 1.25fr .85fr .85fr;
+      gap: 14px;
+      margin: 22px 0 26px;
+    }
+
+    .page-gallery-card {
+      position: relative;
+      min-height: 210px;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.07);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .page-gallery-card.big {
+      grid-row: span 2;
+      min-height: 438px;
+    }
+
+    .page-gallery-card.wide {
+      grid-column: span 2;
+    }
+
+    .page-gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.08) contrast(1.03);
+      transition: transform .35s ease;
+    }
+
+    .page-gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .page-gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.2) 55%, transparent);
+      z-index: 2;
+    }
+
+    .page-gallery-card .gallery-label {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      z-index: 3;
+    }
+
+    .page-gallery-card .gallery-label span {
+      display: block;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: .72rem;
+      font-weight: 900;
+    }
+
+    .page-gallery-card .gallery-label strong {
+      display: block;
+      color: var(--cream);
+      font-family: "Playfair Display", serif;
+      font-size: 1.28rem;
+      margin-top: 4px;
+    }
+
+    .edibles-luxury-layout {
+      display: grid;
+      grid-template-columns: .95fr 1.15fr;
+      gap: 18px;
+      align-items: stretch;
+      margin: 24px 0 28px;
+    }
+
+    .edibles-luxury-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .edibles-luxury-main {
+      min-height: 520px;
+      border-radius: 34px;
+    }
+
+    .edibles-note-glow {
+      color: var(--champagne);
+      text-shadow: 0 0 10px rgba(255,209,102,.58), 0 0 24px rgba(255,79,195,.35);
+      font-weight: 900;
+    }
+
+    @media (max-width: 900px) {
+      .page-gallery,
+      .edibles-luxury-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .page-gallery-card.big,
+      .page-gallery-card.wide,
+      .edibles-luxury-main {
+        grid-row: auto;
+        grid-column: auto;
+        min-height: 260px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-gallery-card,
+      .page-gallery-card.big,
+      .page-gallery-card.wide,
+      .edibles-luxury-main {
+        min-height: 220px;
+        border-radius: 24px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-home, .page-hero, .grid2, .grid3, .menu-grid, .checkout-grid { grid-template-columns: 1fr; }
+      .grid4 { grid-template-columns: repeat(2, 1fr); }
+      .food-showcase { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .food-shot.main { grid-row: auto; min-height: 330px; }
+      .page-media { height: 390px; }
+      .menu-toggle { display: block; }
+      .nav { display: none; position: absolute; top: 78px; left: 5%; right: 5%; flex-direction: column; align-items: flex-start; padding: 22px; border-radius: 22px; background: #1b0b20; box-shadow: var(--shadow); }
+      .nav.open { display: flex; }
+      .brand { min-width: auto; }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: 92%; }
+      .brand-title strong { font-size: .92rem; }
+      .logo-img, .fallback-logo { width: 46px; height: 46px; }
+      h1 { letter-spacing: -1px; }
+      .grid4, .option-list { grid-template-columns: 1fr; }
+      .float-cart { left: 12px; right: 12px; text-align: center; }
+      .bot-input-row { flex-direction: column; }
+      .page-media { height: 300px; }
+    }
+
+    /* ===== LIVELY / FANCY BADDIE REFRESH OVERRIDES ===== */
+    :root {
+      --hot: #ff0f9b;
+      --blush: #ffb7e9;
+      --champagne: #ffe7ae;
+      --plum2: #2a102d;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 8% 8%, rgba(255,15,155,.35), transparent 30%),
+        radial-gradient(circle at 78% 12%, rgba(255,209,102,.19), transparent 28%),
+        radial-gradient(circle at 50% 95%, rgba(255,79,195,.18), transparent 34%),
+        linear-gradient(135deg, #040104, #170719 45%, #050205) !important;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      right: -160px;
+      top: 18%;
+      pointer-events: none;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,79,195,.25), transparent 65%);
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    .topbar {
+      background: rgba(7, 2, 7, 0.72) !important;
+      border-bottom: 1px solid rgba(255,255,255,0.10) !important;
+    }
+
+    .nav .pill,
+    .btn.primary,
+    .addbtn {
+      background: linear-gradient(135deg, var(--hot), var(--pink), var(--gold)) !important;
+      box-shadow: 0 0 28px rgba(255,79,195,.26);
+    }
+
+    .hero-home {
+      min-height: 90vh !important;
+      grid-template-columns: .9fr 1.1fr !important;
+    }
+
+    .logo-watermark {
+      color: var(--champagne) !important;
+      font-weight: 900;
+      box-shadow: 0 0 30px rgba(255,79,195,.12);
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3.4rem, 7.5vw, 8rem) !important;
+      line-height: .84 !important;
+    }
+
+    .hero-copy h1::after {
+      content: " ✦ hot • elite • premium";
+      display: block;
+      font-family: "Poppins", sans-serif;
+      font-size: clamp(.78rem, 1.3vw, 1rem);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 18px;
+    }
+
+    .script-word {
+      color: var(--blush) !important;
+      text-shadow: 0 0 26px rgba(255,79,195,.65) !important;
+    }
+
+    .mini-pill {
+      border: 1px solid rgba(255,209,102,.28) !important;
+      background: rgba(255,255,255,.065) !important;
+    }
+
+    .food-shot {
+      border-radius: 36px !important;
+      box-shadow: 0 32px 95px rgba(0,0,0,.52) !important;
+    }
+
+    .food-shot::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle, rgba(255,255,255,.22), transparent 40%);
+      transform: rotate(25deg);
+      opacity: .35;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .food-shot::after {
+      z-index: 2;
+      background: linear-gradient(to top, rgba(0,0,0,.80), transparent 58%) !important;
+    }
+
+    .food-shot .label {
+      z-index: 3 !important;
+    }
+
+    .food-shot.main::before {
+      content: "✦";
+      inset: auto;
+      top: 18px;
+      right: 24px;
+      background: none;
+      color: var(--gold);
+      font-size: 2rem;
+      z-index: 5;
+      filter: drop-shadow(0 0 12px rgba(255,209,102,.6));
+    }
+
+    .course-card {
+      min-height: 315px !important;
+      background:
+        linear-gradient(150deg, rgba(255,79,195,.10), rgba(255,209,102,.06)),
+        rgba(255,255,255,.075) !important;
+    }
+
+    .course-card h3 {
+      font-size: 1.13rem;
+    }
+
+    .course-card:hover,
+    .product-card:hover,
+    .review-card:hover {
+      transform: translateY(-6px) !important;
+      box-shadow: 0 34px 100px rgba(255,79,195,.14) !important;
+    }
+
+    .page-media {
+      border-radius: 42px !important;
+    }
+
+    .float-label {
+      background: rgba(0,0,0,.50) !important;
+      border: 1px solid rgba(255,255,255,.18) !important;
+    }
+
+
+    .glow-writeup {
+      display: inline-block;
+      color: var(--champagne);
+      text-shadow:
+        0 0 8px rgba(255, 209, 102, .65),
+        0 0 18px rgba(255, 79, 195, .45),
+        0 0 34px rgba(255, 79, 195, .22);
+    }
+
+    .glow-headline {
+      text-shadow:
+        0 0 10px rgba(255, 209, 102, .55),
+        0 0 24px rgba(255, 79, 195, .46),
+        0 0 48px rgba(255, 79, 195, .24);
+    }
+
+    .ai-chat-avatar {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 209, 102, .75);
+      box-shadow:
+        0 0 20px rgba(255, 79, 195, .85),
+        0 0 44px rgba(255, 209, 102, .28);
+      background: #140614;
+      animation: avatarPulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes avatarPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 18px rgba(255,79,195,.7), 0 0 38px rgba(255,209,102,.22); }
+      50% { transform: scale(1.04); box-shadow: 0 0 28px rgba(255,79,195,1), 0 0 58px rgba(255,209,102,.36); }
+    }
+
+    .ai-floating-chat {
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 95;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(8, 3, 9, .72);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    .ai-floating-chat span {
+      color: var(--cream);
+      font-weight: 900;
+      font-size: .86rem;
+      padding-right: 6px;
+    }
+
+    .ai-support-intro {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 16px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+    }
+
+    .edibles-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 22px 0;
+    }
+
+    .edibles-showcase .edible-feature {
+      position: relative;
+      min-height: 270px;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      box-shadow: var(--shadow);
+    }
+
+    .edibles-showcase .edible-feature.blackbox {
+      grid-column: span 2;
+      min-height: 340px;
+    }
+
+    .edibles-showcase img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .edibles-showcase .edible-feature::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.75), transparent 58%);
+    }
+
+    .edibles-showcase .edible-caption {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 18px;
+      z-index: 3;
+    }
+
+    .edibles-showcase .edible-caption strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 1.45rem;
+      color: var(--cream);
+    }
+
+    .edibles-showcase .edible-caption span {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      font-size: .76rem;
+      font-weight: 900;
+    }
+
+    .elite-black-box-note {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255, 79, 195, .11);
+      border: 1px solid rgba(255, 209, 102, .24);
+      color: var(--muted);
+    }
+
+    @media (max-width: 700px) {
+      .edibles-showcase {
+        grid-template-columns: 1fr;
+      }
+
+      .edibles-showcase .edible-feature.blackbox {
+        grid-column: span 1;
+      }
+
+      .ai-floating-chat span {
+        display: none;
+      }
+    }
+
+
+    .home-collage {
+      position: relative;
+      min-height: 610px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      grid-template-rows: 230px 170px 170px;
+      gap: 14px;
+    }
+
+    .combo-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.075);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .combo-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.08) contrast(1.04);
+      transition: transform .35s ease;
+    }
+
+    .combo-tile:hover img {
+      transform: scale(1.05);
+    }
+
+    .combo-tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,.12) 55%, transparent);
+      pointer-events: none;
+    }
+
+    .combo-tile .label {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      z-index: 3;
+    }
+
+    .combo-tile .label span {
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: .72rem;
+    }
+
+    .combo-tile .label strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 1.28rem;
+      color: var(--cream);
+      margin-top: 4px;
+    }
+
+    .combo-main {
+      grid-row: span 2;
+    }
+
+    .combo-wide {
+      grid-column: span 2;
+    }
+
+    .combo-float {
+      position: absolute;
+      width: 37%;
+      right: 7%;
+      top: 39%;
+      transform: rotate(-3deg);
+      min-height: 180px;
+      z-index: 8;
+      border: 2px solid rgba(255, 209, 102, .28);
+    }
+
+    .combo-float::before {
+      content: "✦";
+      position: absolute;
+      right: 18px;
+      top: 12px;
+      z-index: 4;
+      color: var(--gold);
+      font-size: 1.35rem;
+      text-shadow: 0 0 16px rgba(255,209,102,.7);
+    }
+
+
+    .call-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 209, 102, .35);
+      background: rgba(255, 255, 255, .07);
+      color: var(--champagne);
+      font-weight: 900;
+      box-shadow: 0 0 28px rgba(255, 79, 195, .16);
+    }
+
+    .call-line a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .mobile-call-bar {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 76px;
+      z-index: 92;
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .mobile-call-bar a,
+    .mobile-call-bar button {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 12px;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    .mobile-call-bar .call-now {
+      background: linear-gradient(135deg, var(--gold), var(--pink));
+      color: #160617;
+    }
+
+    .mobile-call-bar .chat-now {
+      background: #25d366;
+      color: #061f0f;
+    }
+
+    @media (max-width: 560px) {
+      .mobile-call-bar {
+        display: grid;
+      }
+
+      .float-cart {
+        bottom: 128px;
+      }
+
+      .ai-floating-chat {
+        bottom: 128px;
+      }
+    }
+
+
+    .page-gallery {
+      display: grid;
+      grid-template-columns: 1.25fr .85fr .85fr;
+      gap: 14px;
+      margin: 22px 0 26px;
+    }
+
+    .page-gallery-card {
+      position: relative;
+      min-height: 210px;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.07);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .page-gallery-card.big {
+      grid-row: span 2;
+      min-height: 438px;
+    }
+
+    .page-gallery-card.wide {
+      grid-column: span 2;
+    }
+
+    .page-gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.08) contrast(1.03);
+      transition: transform .35s ease;
+    }
+
+    .page-gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .page-gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.2) 55%, transparent);
+      z-index: 2;
+    }
+
+    .page-gallery-card .gallery-label {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      z-index: 3;
+    }
+
+    .page-gallery-card .gallery-label span {
+      display: block;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: .72rem;
+      font-weight: 900;
+    }
+
+    .page-gallery-card .gallery-label strong {
+      display: block;
+      color: var(--cream);
+      font-family: "Playfair Display", serif;
+      font-size: 1.28rem;
+      margin-top: 4px;
+    }
+
+    .edibles-luxury-layout {
+      display: grid;
+      grid-template-columns: .95fr 1.15fr;
+      gap: 18px;
+      align-items: stretch;
+      margin: 24px 0 28px;
+    }
+
+    .edibles-luxury-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .edibles-luxury-main {
+      min-height: 520px;
+      border-radius: 34px;
+    }
+
+    .edibles-note-glow {
+      color: var(--champagne);
+      text-shadow: 0 0 10px rgba(255,209,102,.58), 0 0 24px rgba(255,79,195,.35);
+      font-weight: 900;
+    }
+
+    @media (max-width: 900px) {
+      .page-gallery,
+      .edibles-luxury-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .page-gallery-card.big,
+      .page-gallery-card.wide,
+      .edibles-luxury-main {
+        grid-row: auto;
+        grid-column: auto;
+        min-height: 260px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-gallery-card,
+      .page-gallery-card.big,
+      .page-gallery-card.wide,
+      .edibles-luxury-main {
+        min-height: 220px;
+        border-radius: 24px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .home-collage {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        min-height: auto;
+      }
+
+      .combo-main,
+      .combo-wide {
+        grid-row: auto;
+        grid-column: auto;
+      }
+
+      .combo-tile {
+        min-height: 240px;
+      }
+
+      .combo-float {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        transform: none;
+        min-height: 240px;
+      }
+    }
+
+
+    .call-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 209, 102, .35);
+      background: rgba(255, 255, 255, .07);
+      color: var(--champagne);
+      font-weight: 900;
+      box-shadow: 0 0 28px rgba(255, 79, 195, .16);
+    }
+
+    .call-line a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .mobile-call-bar {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 76px;
+      z-index: 92;
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .mobile-call-bar a,
+    .mobile-call-bar button {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 12px;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    .mobile-call-bar .call-now {
+      background: linear-gradient(135deg, var(--gold), var(--pink));
+      color: #160617;
+    }
+
+    .mobile-call-bar .chat-now {
+      background: #25d366;
+      color: #061f0f;
+    }
+
+    @media (max-width: 560px) {
+      .mobile-call-bar {
+        display: grid;
+      }
+
+      .float-cart {
+        bottom: 128px;
+      }
+
+      .ai-floating-chat {
+        bottom: 128px;
+      }
+    }
+
+
+    .page-gallery {
+      display: grid;
+      grid-template-columns: 1.25fr .85fr .85fr;
+      gap: 14px;
+      margin: 22px 0 26px;
+    }
+
+    .page-gallery-card {
+      position: relative;
+      min-height: 210px;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.07);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .page-gallery-card.big {
+      grid-row: span 2;
+      min-height: 438px;
+    }
+
+    .page-gallery-card.wide {
+      grid-column: span 2;
+    }
+
+    .page-gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.08) contrast(1.03);
+      transition: transform .35s ease;
+    }
+
+    .page-gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .page-gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.2) 55%, transparent);
+      z-index: 2;
+    }
+
+    .page-gallery-card .gallery-label {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      z-index: 3;
+    }
+
+    .page-gallery-card .gallery-label span {
+      display: block;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: .72rem;
+      font-weight: 900;
+    }
+
+    .page-gallery-card .gallery-label strong {
+      display: block;
+      color: var(--cream);
+      font-family: "Playfair Display", serif;
+      font-size: 1.28rem;
+      margin-top: 4px;
+    }
+
+    .edibles-luxury-layout {
+      display: grid;
+      grid-template-columns: .95fr 1.15fr;
+      gap: 18px;
+      align-items: stretch;
+      margin: 24px 0 28px;
+    }
+
+    .edibles-luxury-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .edibles-luxury-main {
+      min-height: 520px;
+      border-radius: 34px;
+    }
+
+    .edibles-note-glow {
+      color: var(--champagne);
+      text-shadow: 0 0 10px rgba(255,209,102,.58), 0 0 24px rgba(255,79,195,.35);
+      font-weight: 900;
+    }
+
+    @media (max-width: 900px) {
+      .page-gallery,
+      .edibles-luxury-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .page-gallery-card.big,
+      .page-gallery-card.wide,
+      .edibles-luxury-main {
+        grid-row: auto;
+        grid-column: auto;
+        min-height: 260px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-gallery-card,
+      .page-gallery-card.big,
+      .page-gallery-card.wide,
+      .edibles-luxury-main {
+        min-height: 220px;
+        border-radius: 24px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-home {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
-  <header>
-    <div class="brand">Pandora Box Delight</div>
+  <header class="topbar">
+    <div class="container navwrap">
+      <a class="brand" onclick="showPage('home')">
+        <img class="logo-img" src="assets/images/logo.png" alt="Pandora Box Delight logo" onerror="this.style.display='none'; document.querySelector('.fallback-logo').style.display='grid';">
+        <span class="fallback-logo">P</span>
+        <span class="brand-title">
+          <strong>Pandora Box Delight</strong>
+          <small>Luxury bites</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle">☰</button>
+
+      <nav class="nav" id="mainNav">
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('about')">About / Map</a>
+        <a onclick="showPage('menu')">Menu</a>
+        <a onclick="showPage('reviews')">Reviews</a>
+        <a onclick="showPage('support')">AI Care</a>
+        <a onclick="showPage('contact')">Bookings/Complaints</a>
+        <a onclick="showPage('checkout')">Checkout</a>
+        <a class="pill" onclick="showPage('cart')">Order List <span data-cart-count>0</span></a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <h1>Luxury bites, sweet moments.</h1>
-    <p>
-      Welcome to Pandora Box Delight — your taste buds luxury food trip to absolute delight,
-      We are your NUMBER 1 go to plug for the best pizza,
-      shawarma, waffles, doughnuts, burgers, gelato, smoothies, cocktails, parfait,
-      Greek yoghurt and cotton candy.
-    </p>
+  <main>
+    <!-- HOME PAGE -->
+    <section class="page active" id="page-home">
+      <div class="container hero-home">
+        <div class="hero-copy">
+          <div class="logo-watermark">
+            <img src="assets/images/logo.png" alt="logo" onerror="this.style.display='none'">
+            <span>elite taste • luxurious bites • just delightful</span>
+          </div>
 
-```
-<a class="btn" href="#menu">View Menu</a>
-<a class="btn" href="https://wa.me/2340000000000?text=Hello%20Pandora%20Box%20Delight%2C%20I%20want%20to%20place%20an%20order" target="_blank">
-  Order on WhatsApp
-</a>
-```
+          <p class="kicker glow-writeup">Welcome to the box of delight, bae 😊</p>
+          <h1 class="glow-headline"><span class="script-word">Luxury bites,</span><br>that will take you to Mars.</h1>
+          <p>
+            Welcome to Pandora Box Delight — your taste buds luxury food trip to absolute delight.
+            We are your NUMBER 1 go-to plug for the best pizza, shawarma, waffles, doughnuts,
+            burgers, gelato, smoothies, cocktails, parfait, Greek yoghurt and cotton candy.
+          </p>
 
-  </section>
+          <div class="hero-mini">
+            <span class="mini-pill">Fresh from the kitchen</span>
+            <span class="mini-pill">Saucy, hot & rich</span>
+            <span class="mini-pill">Main-character cravings</span>
+            <span class="mini-pill">Luxury cravings only</span>
+          </div>
 
-  <section class="section" id="menu">
-    <h2>Our Menu</h2>
 
-```
-<div class="menu">
-  <div class="card">
-    <h3>Elite Pandora Pizza</h3>
-    <p>Cheesy pizza with chicken, beef, sausage and colourful toppings.</p>
-    <strong>From ₦___</strong>
+          <div class="call-line">
+            <span>📞 Call line:</span>
+            <a href="tel:+2340000000000">+234 000 000 0000</a>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" onclick="showPage('menu')">Open the Paradise Menu</button>
+            <button class="btn secondary" onclick="showPage('checkout')">Build My Box</button>
+            <button class="btn secondary" onclick="showPage('about')">Visit Us</button>
+          </div>
+        </div>
+
+        <div class="home-collage" aria-label="Pandora Box Delight homepage food collage">
+          <div class="combo-tile combo-main">
+            <img src="assets/images/pizza.jpg" alt="Fresh Star Pizza">
+            <div class="label">
+              <span>star of the box</span>
+              <strong>Hot Star Pizza</strong>
+            </div>
+          </div>
+
+          <div class="combo-tile">
+            <img src="assets/images/shawarma.jpg" alt="Golden shawarma wraps">
+            <div class="label">
+              <span>signature wrap</span>
+              <strong>Golden Shawarma</strong>
+            </div>
+          </div>
+
+          <div class="combo-tile">
+            <img src="assets/images/smoothie.jpg" alt="Smoothie drink">
+            <div class="label">
+              <span>sip the luxury</span>
+              <strong>Elite Smoothies</strong>
+            </div>
+          </div>
+
+          <div class="combo-tile combo-float">
+            <img src="assets/images/gelato.jpg" alt="Premium gelato">
+            <div class="label">
+              <span>cold luxury</span>
+              <strong>6-Flavour Gelato</strong>
+            </div>
+          </div>
+
+          <div class="combo-tile">
+            <img src="assets/images/chicken.jpg" alt="Crispy chicken">
+            <div class="label">
+              <span>golden crunch</span>
+              <strong>Crispy Chicken</strong>
+            </div>
+          </div>
+
+          <div class="combo-tile">
+            <img src="assets/images/pastries.jpg" alt="Pastries">
+            <div class="label">
+              <span>fresh indulgence</span>
+              <strong>Pastries & Treats</strong>
+            </div>
+          </div>
+
+          <div class="combo-tile combo-wide">
+            <img src="assets/images/dessert.jpg" alt="Desserts and parfait">
+            <div class="label">
+              <span>sweet finish</span>
+              <strong>Parfait, Greek Yoghurt & Cotton Candy</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <section class="container section">
+        <div class="section-head">
+          <p class="kicker glow-writeup">Pick your cravings rocket 🚀</p>
+          <h2 class="glow-headline"><span class="script-word">Cravings</span> with out-of-this-world cravings</h2>
+          <p>Each category has its own luxury mini page with distinguished recipes, flavours, toppings and add-ons — so <strong><em>my elite consumer, that’s you boo</em> 💕</strong> can pick their exact mood.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="course-card" onclick="showCategory('pizza')"><div class="thumb"><img src="assets/images/pizza.jpg" alt="Pizza"></div><div><div class="course-icon">🍕</div><h3>Star Pizza</h3><p>Bold flavor. Cheesy perfection.</p></div></div>
+          <div class="course-card" onclick="showCategory('burger')"><div class="thumb"><img src="assets/images/burger.jpg" alt="Boss Burger"></div><div><div class="course-icon">🍔</div><h3><span class="script-word">Boss</span> Burger</h3><p>Big bite energy. Juicy, saucy and made to rule.</p></div></div>
+          <div class="course-card" onclick="showCategory('shawarma')"><div class="thumb"><img src="assets/images/shawarma.jpg" alt="Shawarma"></div><div><div class="course-icon">🌯</div><h3>Golden Shawarma Wraps</h3><p>Juicy. Flavorful. Irresistible.</p></div></div>
+          <div class="course-card" onclick="showCategory('chicken')"><div class="thumb"><img src="assets/images/chicken.jpg" alt="Chicken"></div><div><div class="course-icon">🍗</div><h3>Crispy Chicken Perfection</h3><p>Served hot, fresh, and golden.</p></div></div>
+          <div class="course-card" onclick="showCategory('pastry')"><div class="thumb"><img src="assets/images/pastries.jpg" alt="Pastries"></div><div><div class="course-icon">🧇</div><h3>Fresh Pastries, Sweet Indulgence</h3><p>Waffles, doughnuts, meat pie & brownies.</p></div></div>
+          <div class="course-card" onclick="showCategory('dessert')"><div class="thumb"><img src="assets/images/dessert.jpg" alt="Desserts"></div><div><div class="course-icon">🍓</div><h3>Pure Delight</h3><p>Parfait, Greek yoghurt & cotton candy.</p></div></div>
+          <div class="course-card" onclick="showCategory('gelato')"><div class="thumb"><img src="assets/images/gelato.jpg" alt="Gelato"></div><div><div class="course-icon">🍦</div><h3>Premium Gelato Experience</h3><p>6 flavours of luxury.</p></div></div>
+          <div class="course-card" onclick="showCategory('drink')"><div class="thumb"><img src="assets/images/drinks.jpg" alt="Drinks"></div><div><div class="course-icon">🍹</div><h3>Sip the Luxury</h3><p>Smoothies, milkshakes, juices & more.</p></div></div>
+          <div class="course-card" onclick="showCategory('cocktail')"><div class="thumb"><img src="assets/images/drinks.jpg" alt="Cocktails"></div><div><div class="course-icon">🍸</div><h3>Cocktail Paradise</h3><p>Bold, chilled, colourful flavours.</p></div></div>
+          <div class="course-card" onclick="showCategory('mocktail')"><div class="thumb"><img src="assets/images/drinks.jpg" alt="Mocktails"></div><div><div class="course-icon">🥂</div><h3>Mocktail Glow Bar</h3><p>Fresh, fruity, alcohol-free luxury sips.</p></div></div>
+          <div class="course-card" onclick="showCategory('signature')"><div class="thumb"><img src="assets/images/smoothie.jpg" alt="Elite Signature Drinks"></div><div><div class="course-icon">👑</div><h3>Elite Signature Drinks</h3><p>Special house mixes made for the spotlight.</p></div></div>
+          <div class="course-card" onclick="showCategory('edibles')"><div class="thumb"><img src="assets/images/edibles.jpg" alt="Edibles" onerror="this.src='assets/images/pastries.jpg'"></div><div><div class="course-icon">🍫</div><h3>Edibles</h3><p>Brownies, gummies & special treats.</p></div></div>
+          <div class="course-card" onclick="showPage('about')"><div class="thumb"><img src="assets/images/kiosk.jpg" alt="Kiosk"></div><div><div class="course-icon">📍</div><h3>Visit the Box</h3><p>About us, location, map and opening hours.</p></div></div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ABOUT / MAP PAGE -->
+    <section class="page" id="page-about">
+      <div class="container breadcrumb"><span onclick="showPage('home')">Home</span> / About Us / Map</div>
+      <div class="container page-hero">
+        <div>
+          <p class="kicker">About Pandora Box Delight</p>
+          <h1><span class="script-word">The Box</span><br>With the Glow</h1>
+          <p>
+            Pandora Box Delight is a stylish food brand built around fresh food, beautiful packaging,
+            premium presentation and a baddie-luxury customer experience. Your kiosk picture belongs here,
+            beside your brand story, address, opening hours and Google Map.
+          </p>
+          <div class="option-list">
+            <div class="option-box"><strong>Opening Hours</strong><br>Mon - Sun: 10AM - 10PM</div>
+            <div class="option-box"><strong>Service</strong><br>Pickup, delivery & walk-up orders</div>
+            <div class="option-box"><strong>Location</strong><br>Replace with your real address</div>
+            <div class="option-box"><strong>Contact</strong><br>Replace with your real WhatsApp</div>
+          </div>
+        </div>
+        <div class="page-media">
+          <img src="assets/images/kiosk.jpg" alt="Pandora Box Delight kiosk">
+          <div class="float-label"><strong>Visit Pandora Box Delight</strong><p>Upload your corrected kiosk image here.</p></div>
+        </div>
+      </div>
+      <section class="container section">
+        <div class="section-head"><p class="kicker">Find us</p><h2>Google Map</h2><p>Paste your Google Maps embed code here after you have your exact shop location.</p></div>
+        <div class="map-placeholder"><div><h2>Google Map Embed Goes Here</h2><p>Google Maps → Share → Embed a map → copy iframe → replace this box.</p><button class="btn primary" onclick="alert('Replace this with your Google Maps location link.')">Open Map Placeholder</button></div></div>
+      </section>
+    </section>
+
+    <!-- MENU PAGE -->
+    <section class="page" id="page-menu">
+      <div class="container breadcrumb"><span onclick="showPage('home')">Home</span> / Menu</div>
+      <section class="container page-hero" id="menuHero">
+        <div id="menuHeroText"></div>
+        <div class="page-media">
+          <img id="menuHeroImg" src="assets/images/pizza.jpg" alt="Pandora menu">
+          <div class="float-label"><strong id="menuHeroLabel">Pandora Menu</strong><p id="menuHeroCaption">Choose a category and build your order.</p></div>
+        </div>
+      </section>
+      <section class="container section" style="padding-top:0">
+        <div class="filters">
+          <button class="filter active" onclick="filterMenu('all', this)">All</button>
+          <button class="filter" onclick="filterMenu('pizza', this)">Pizza</button>
+          <button class="filter" onclick="filterMenu('shawarma', this)">Shawarma</button>
+          <button class="filter" onclick="filterMenu('burger', this)">Boss Burger</button>
+          <button class="filter" onclick="filterMenu('chicken', this)">Chicken</button>
+          <button class="filter" onclick="filterMenu('pastry', this)">Pastries</button>
+          <button class="filter" onclick="filterMenu('dessert', this)">Dessert</button>
+          <button class="filter" onclick="filterMenu('gelato', this)">Gelato</button>
+          <button class="filter" onclick="filterMenu('drink', this)">Drinks</button>
+          <button class="filter" onclick="filterMenu('cocktail', this)">Cocktails</button>
+          <button class="filter" onclick="filterMenu('mocktail', this)">Mocktails</button>
+          <button class="filter" onclick="filterMenu('signature', this)">Elite Signature Drinks</button>
+          <button class="filter" onclick="filterMenu('edibles', this)">Edibles</button>
+        </div>
+        
+        <div id="ediblesShowcase" class="edibles-showcase hidden">
+          <div class="edible-feature">
+            <img src="assets/images/brownies.jpg" alt="Fresh chocolate brownies">
+            <div class="edible-caption">
+              <span>straight from the oven</span>
+              <strong>Chocolate Brownies</strong>
+            </div>
+          </div>
+
+          <div class="edible-feature">
+            <img src="assets/images/gummies.jpg" alt="Colourful gummies">
+            <div class="edible-caption">
+              <span>sweet glow bites</span>
+              <strong>Fruit Gummies</strong>
+            </div>
+          </div>
+
+          <div class="edible-feature blackbox">
+            <img src="assets/images/eliteblackbox.jpg" alt="EliteBlack Box">
+            <div class="edible-caption">
+              <span>luxury black box special</span>
+              <strong>EliteBlack Box</strong>
+              <div class="elite-black-box-note">
+                A signature black box for brownies, gummies and special treats. Upload the black box image with only the glowing text “EliteBlack Box”.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="pageGallery" class="page-gallery"></div>
+        <div class="menu-grid" id="menuGrid"></div>
+      </section>
+    </section>
+
+    <!-- CART -->
+    <section class="page" id="page-cart">
+      <div class="container breadcrumb"><span onclick="showPage('home')">Home</span> / Order List</div>
+      <section class="container section">
+        <div class="section-head"><p class="kicker">Order list</p><h1>Your selected items</h1><p>This free version stores the customer order in the browser and sends it to WhatsApp for confirmation.</p></div>
+        <div class="checkout-grid">
+          <div class="checkout-panel"><h2>Items</h2><div id="cartItems"></div><div class="actions"><button class="btn secondary" onclick="showPage('menu')">Add More</button><button class="btn danger" onclick="clearCart()">Clear Order</button><button class="btn primary" onclick="showPage('checkout')">Continue to Checkout</button></div></div>
+          <div class="notice warn"><h3>Before launch</h3><p>Replace prices, WhatsApp number, bank details, payment links and address before sharing with customers.</p></div>
+        </div>
+      </section>
+    </section>
+
+    <!-- CHECKOUT -->
+    <section class="page" id="page-checkout">
+      <div class="container breadcrumb"><span onclick="showPage('home')">Home</span> / Checkout</div>
+      <section class="container section">
+        <div class="section-head"><p class="kicker">Checkout</p><h1>Confirm & Pay</h1><p>Customers fill details, choose payment method and send the order to WhatsApp. Live card/transfer needs your real Flutterwave or Paystack payment link.</p></div>
+        <div class="checkout-grid">
+          <div class="checkout-panel"><h2>Customer Details</h2><div class="form-grid"><input id="customerName" placeholder="Your name"><input id="customerPhone" placeholder="Phone number"><textarea id="customerAddress" placeholder="Delivery address or pickup note"></textarea><select id="paymentMethod"><option>Pay on pickup / cash</option><option>Bank transfer</option><option>Card payment via Flutterwave</option><option>Paystack payment</option><option>Home delivery with extra charge</option><option>BTC / crypto manual confirmation</option><option>Gift card manual confirmation</option></select><textarea id="orderSummaryText" placeholder="Order items appear here automatically"></textarea><textarea id="customerNotes" placeholder="Extra note: sauce, flavour, delivery time, etc."></textarea><button class="btn primary" onclick="sendWhatsAppOrder()">Send Order to WhatsApp</button></div></div>
+          <div class="checkout-panel"><h2>Payment & Delivery Options</h2><div class="payment-option success"><h3>💳 Flutterwave Card / Transfer</h3><p>Paste your real Flutterwave payment link here later.</p><button class="btn secondary" onclick="alert('Replace this with your real Flutterwave payment link.')">Flutterwave Placeholder</button></div><div class="payment-option"><h3>🏦 Bank Transfer</h3><p>Bank name: ______<br>Account name: ______<br>Account number: ______</p></div>
+            <div class="payment-option success"><h3>🛵 Home Delivery</h3><p>We can deliver anywhere. Delivery fee is added based on the customer location. Replace this with your exact delivery areas and charges.</p></div><div class="payment-option"><h3>💰 Paystack Optional</h3><p>Use Paystack if you want another card/bank/USSD/QR option later.</p></div><div class="payment-option warn"><h3>₿ BTC / Gift Card</h3><p>Manual confirmation only. Do not release order until payment is verified.</p></div></div>
+        </div>
+      </section>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="page" id="page-reviews">
+      <div class="container breadcrumb"><span onclick="showPage('home')">Home</span> / Reviews</div>
+      <section class="container section"><div class="section-head"><p class="kicker">Customer love</p><h1>Reviews & Testimonials</h1><p>Start with manual reviews. Later, link a Google Form or real review system.</p></div><div class="grid3"><div class="review-card"><h3>★★★★★</h3><p>“The pizza and smoothie combo was beautiful. Add real customer review here.”</p><strong>- Customer name</strong></div><div class="review-card"><h3>★★★★★</h3><p>“The gelato and parfait looked premium. Add real customer review here.”</p><strong>- Customer name</strong></div><div class="review-card"><h3>★★★★★</h3><p>“Fast pickup, nice packaging and sweet customer service.”</p><strong>- Customer name</strong></div></div><div class="notice" style="margin-top:18px"><h2>Review Form Placeholder</h2><p>Add your Google Form review link here later.</p><button class="btn primary" onclick="alert('Replace this with your Google Form link later.')">Leave a Review</button></div></section>
+    </section>
+
+    <!-- SUPPORT -->
+    <section class="page" id="page-support">
+      <div class="container breadcrumb"><span onclick="showPage('home')">Home</span> / AI Customer Care</div>
+      <section class="container section"><div class="section-head"><p class="kicker">Customer care</p><h1>AI Care & Live Chat</h1><p>This starter includes a simple helper bot. A real AI bot needs an AI service/API and backend. Free live chat can be added later with a chat widget.</p></div><div class="checkout-grid"><div class="bot-panel"><h2>Pandora Helper Bot Demo</h2>
+
+            <div class="ai-support-intro">
+              <img class="ai-chat-avatar" src="assets/images/ai-head.png" alt="Pandora AI support assistant">
+              <div>
+                <h3>Pandora AI Care is online</h3>
+                <p>Tap the glowing head on any page to open this chat room. When the assistant replies, the head represents your customer-care face.</p>
+              </div>
+            </div>
+<div class="bot-window"><div class="bot-head">Pandora AI Care</div><div class="bot-messages" id="botMessages"><div class="msg">Hi love, welcome to Pandora Box Delight. Ask about pizza, price, delivery, opening time, payment, edibles or menu.</div></div><div class="bot-input-row"><input id="botInput" placeholder="Type your question..." onkeydown="if(event.key==='Enter') quickBotAnswer()"><button class="addbtn" onclick="quickBotAnswer()">Send</button></div></div></div><div class="notice warn"><h2>Real Customer Care Setup</h2><p>Later, paste your live chat widget code before the closing body tag.</p><p><strong>Do not put secret API keys inside this static website.</strong> Visitors can view HTML and JavaScript.</p></div></div></section>
+    </section>
+
+    <section class="page" id="page-contact">
+      <div class="container breadcrumb"><span onclick="showPage('home')">Home</span> / Bookings / Complaints / Socials</div>
+
+      <section class="container section">
+        <div class="section-head">
+          <p class="kicker glow-writeup">Bookings, complaints & socials</p>
+          <h1 class="glow-headline"><span class="script-word">Talk</span><br>To The Box</h1>
+          <p>
+            For orders, event bookings, bulk food boxes, delivery complaints, payment complaints,
+            collaboration or support, message Pandora Box Delight directly.
+          </p>
+        </div>
+
+        <div class="grid3">
+          <div class="card">
+            <h3>📦 WhatsApp Orders</h3>
+            <p>Use this for normal food orders, pickup, delivery and menu questions.</p>
+            <button class="btn primary" onclick="openWhatsApp('Hello Pandora Box Delight, I want to place an order.')">Order on WhatsApp</button>
+          </div>
+
+          <div class="card">
+            <h3>👑 Bookings</h3>
+            <p>Use this for birthday boxes, party packs, office orders, bulk orders and special food requests.</p>
+            <button class="btn secondary" onclick="openWhatsApp('Hello Pandora Box Delight, I want to make a booking or bulk order.')">Book Now</button>
+          </div>
+
+          <div class="card">
+            <h3>⚠️ Complaints</h3>
+            <p>Use this for payment issues, wrong order, delivery delay, refund request or customer-care support.</p>
+            <button class="btn secondary" onclick="openWhatsApp('Hello Pandora Box Delight, I want to make a complaint.')">Send Complaint</button>
+          </div>
+        </div>
+
+        <div class="notice" style="margin-top:18px">
+          <h2>Social Media Handles</h2>
+          <p>Replace these placeholders with your real business handles before launch.</p>
+          <div class="option-list">
+            <div class="option-box"><strong>Instagram</strong><br>@pandoraboxdelight</div>
+            <div class="option-box"><strong>TikTok</strong><br>@pandoraboxdelight</div>
+            <div class="option-box"><strong>Facebook</strong><br>Pandora Box Delight</div>
+            <div class="option-box"><strong>WhatsApp</strong><br>+234 000 000 0000</div>
+            <div class="option-box"><strong>Call Line</strong><br><a href="tel:+2340000000000">+234 000 000 0000</a></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+  </main>
+
+
+
+  <div class="mobile-call-bar">
+    <a class="call-now" href="tel:+2340000000000">📞 Call</a>
+    <button class="chat-now" onclick="openWhatsApp('Hello Pandora Box Delight, I want to order or ask a question.')">💬 WhatsApp</button>
   </div>
 
-  <div class="card">
-    <h3>Shawarma</h3>
-    <p>Chicken or beef shawarma with sausage, veggies and creamy sauce.</p>
-    <strong>From ₦___</strong>
-  </div>
+  <button class="ai-floating-chat" onclick="showPage('support')" aria-label="Open Pandora AI customer care">
+    <img class="ai-chat-avatar" src="assets/images/ai-head.png" alt="Pandora AI support">
+    <span>AI Care</span>
+  </button>
 
-  <div class="card">
-    <h3>Burger</h3>
-    <p>Classic burger with cheese, lettuce, tomato and Pandora sauce.</p>
-    <strong>From ₦___</strong>
-  </div>
+  <button class="float-cart" onclick="showPage('cart')">Order List: <span data-cart-count>0</span></button>
+  <footer class="footer"><div class="container"><strong>Pandora Box Delight</strong><br>Orders • Bookings • Complaints • Socials<br>© <span id="year"></span> Luxury bites, sweet moments. All rights reserved.</div></footer>
 
-  <div class="card">
-    <h3>Waffles & Doughnuts</h3>
-    <p>Sweet pastries served fresh with toppings and sauces.</p>
-    <strong>From ₦___</strong>
-  </div>
+  <script>
+    const WHATSAPP_NUMBER = "2340000000000";
 
-  <div class="card">
-    <h3>Gelato & Desserts</h3>
-    <p>6-flavour gelato, parfait, Greek yoghurt, brownies and cotton candy.</p>
-    <strong>From ₦___</strong>
-  </div>
 
-  <div class="card">
-    <h3>Drinks</h3>
-    <p>Smoothies, fruit juice, milkshakes, cocktails, mocktails and margarita.</p>
-    <strong>From ₦___</strong>
-  </div>
-</div>
-```
+    const categoryGalleries = {
+      pizza: [
+        ["assets/images/pizza/main.jpg", "main star", "Star Pizza"],
+        ["assets/images/pizza/slice.jpg", "cheese pull", "Fresh Slice"],
+        ["assets/images/pizza/toppings.jpg", "extra toppings", "Saucy Toppings"],
+        ["assets/images/pizza.jpg", "home favourite", "Pizza Glow"]
+      ],
+      shawarma: [
+        ["assets/images/shawarmaa/main.jpg", "signature wrap", "Golden Shawarma"],
+        ["assets/images/shawarmaa/shawarma.jpg", "classic wrap", "Chicken Shawarma"],
+        ["assets/images/shawarmaa/beef.jpg", "beef option", "Beef Shawarma"],
+        ["assets/images/shawarmaa/maiin.jpg", "elite special", "Elite Signature Shawarma"]
+      ],
+      burger: [
+        ["assets/images/burgerr/burger.jpg", "boss bite", "Boss Burger"],
+        ["assets/images/burgerr/burgerr.jpg", "double mood", "Elite Signature Burger"],
+        ["assets/images/burger.jpg", "home burger", "Classic Boss Burger"],
+        ["assets/images/burgerr/burger.jpg", "combo style", "Burger Combo"]
+      ],
+      chicken: [
+        ["assets/images/chickeen/main.jpg", "golden crunch", "Chicken & Chips"],
+        ["assets/images/chickeen/chicken.jpg", "crispy option", "Crispy Chicken"],
+        ["assets/images/chickeen/pastries.jpg", "combo mood", "Chicken Combo"],
+        ["assets/images/chicken.jpg", "home favourite", "Chicken Box"]
+      ],
+      pastry: [
+        ["assets/images/pastries/main.jpg", "fresh pastry", "Pastry Box"],
+        ["assets/images/pastries/waffles.jpg", "sweet bite", "Waffles"],
+        ["assets/images/pastries/dought.jpg", "soft treat", "Doughnuts"],
+        ["assets/images/pastries/main (2).jpg", "savory pastry", "Meat Pie"]
+      ],
+      dessert: [
+        ["assets/images/desserts/main.jpg", "sweet mood", "Dessert Cup"],
+        ["assets/images/desserts/candy.jpg", "candy cloud", "Cotton Candy"],
+        ["assets/images/desserts/gelato.jpg", "cold treat", "Gelato Dessert"],
+        ["assets/images/dessert.jpg", "home sweet", "Dessert Treat"]
+      ],
+      gelato: [
+        ["assets/images/gelatos/main.jpg", "cold luxury", "6-Flavour Gelato"],
+        ["assets/images/gelatos/furit.jpg", "fruit flavour", "Fruit Gelato"],
+        ["assets/images/gelatos/vegan.jpg", "vegan option", "Vegan Gelato"],
+        ["assets/images/gelato.jpg", "display pan", "Gelato Display"]
+      ],
+      drink: [
+        ["assets/images/drinkss/main.jpg", "fresh sip", "Smoothies"],
+        ["assets/images/drinkss/smoothie.jpg", "smooth blend", "Smoothie"],
+        ["assets/images/drinkss/smoothiee.jpg", "elite sip", "Elite Smoothie"],
+        ["assets/images/drinks.jpg", "drink glow", "Luxury Drinks"]
+      ],
+      cocktail: [
+        ["assets/images/cocktails/main.jpg", "bar glow", "Cocktails"],
+        ["assets/images/drinks.jpg", "mix mood", "Luxury Cocktail"],
+        ["assets/images/cocktails/main.jpg", "signature mix", "Signature Cocktail"],
+        ["assets/images/drinks.jpg", "party sip", "Cocktail Box"]
+      ],
+      mocktail: [
+        ["assets/images/mocktails/main.jpg", "no alcohol", "Mocktails"],
+        ["assets/images/drinkss/smoothie.jpg", "fruit mood", "Fruit Mocktail"],
+        ["assets/images/drinkss/smoothiee.jpg", "sweet sip", "Berry Mocktail"],
+        ["assets/images/drinks.jpg", "refreshing", "Mocktail Cup"]
+      ],
+      signature: [
+        ["assets/images/elite-signature/main.jpg", "elite sip", "Elite Signature Drinks"],
+        ["assets/images/smoothie.jpg", "smoothie box", "Elite Smoothie Box"],
+        ["assets/images/smoothiee.jpg", "luxury cup", "Luxury Cup"],
+        ["assets/images/drinkss/smoothiee.jpg", "custom drink", "Custom Signature Drink"]
+      ],
+      edibles: [
+        ["assets/images/edibless/main.jpg", "black box edibles", "Black Box Edibles"],
+        ["assets/images/edibless/brownies.jpg", "oven fresh", "Chocolate Brownies"],
+        ["assets/images/edibless/gummies.jpg", "sweet glow", "Fruit Gummies"],
+        ["assets/images/edibless/eliteblackbox.jpg", "glowing box", "Elite Black Box"]
+      ]
+    };
 
-  </section>
 
-  <section class="section">
-    <h2>Customer Care</h2>
-    <div class="card">
-      <h3>Need help?</h3>
-      <p>
-        Message us on WhatsApp to ask about prices, delivery, pickup, special offers,
-        bulk orders and birthday packages.
-      </p>
-      <a class="btn" href="https://wa.me/2340000000000?text=Hello%20Pandora%20Box%20Delight%2C%20I%20need%20help" target="_blank">
-        Chat Customer Care
-      </a>
-    </div>
-  </section>
+    function renderPageGallery(cat) {
+      const gallery = document.querySelector("#pageGallery");
+      if (!gallery) return;
+      const items = categoryGalleries[cat] || categoryGalleries.pizza;
+      const isEdibles = cat === "edibles";
 
-  <footer>
-    © 2026 Pandora Box Delight. All rights reserved.
-  </footer>
+      if (isEdibles) {
+        gallery.className = "edibles-luxury-layout";
+        gallery.innerHTML = `
+          <div class="edibles-luxury-side">
+            <div class="page-gallery-card">
+              <img src="${items[1][0]}" alt="${items[1][2]}">
+              <div class="gallery-label"><span>${items[1][1]}</span><strong>${items[1][2]}</strong></div>
+            </div>
+            <div class="page-gallery-card">
+              <img src="${items[2][0]}" alt="${items[2][2]}">
+              <div class="gallery-label"><span>${items[2][1]}</span><strong>${items[2][2]}</strong></div>
+            </div>
+          </div>
+          <div class="page-gallery-card edibles-luxury-main">
+            <img src="${items[3][0]}" alt="${items[3][2]}">
+            <div class="gallery-label">
+              <span>${items[3][1]}</span>
+              <strong>Elite Black Box</strong>
+              <p class="edibles-note-glow">Brownies, gummies and special Black Box treats — styled neatly around the glowing luxury box.</p>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      gallery.className = "page-gallery";
+      gallery.innerHTML = items.map((item, index) => `
+        <div class="page-gallery-card ${index === 0 ? "big" : ""}">
+          <img src="${item[0]}" alt="${item[2]}">
+          <div class="gallery-label"><span>${item[1]}</span><strong>${item[2]}</strong></div>
+        </div>
+      `).join("");
+    }
+
+
+    const categoryInfo = {
+      all: { kicker: "Full glam menu", title: "<span class='script-word'>Choose</span><br>Your Craving", subtitle: "Browse all Pandora Box Delight menu items and build your order.", image: "assets/images/pizza.jpg", label: "Full Pandora Menu", caption: "Pizza, shawarma, chicken, pastries, gelato, drinks and more." },
+      pizza: { kicker: "Pizza page", title: "<span class='script-word'>Star</span><br>Pizza", subtitle: "Bold flavor. Cheesy perfection.", image: "assets/images/pizza/main.jpg", label: "Star Pizza", caption: "Choose your size, toppings, extra cheese and sauce level. Elite Box is the special pizza pack." },
+      shawarma: { kicker: "Shawarma page", title: "<span class='script-word'>Golden</span><br>Shawarma Wraps", subtitle: "Juicy. Flavorful. Irresistible.", image: "assets/images/shawarmaa/main.jpg", label: "Golden Shawarma Wraps", caption: "Elite Signature Shawarma, chicken shawarma, beef shawarma, mixed combo, extra sausage, cheese and spice." },
+      burger: { kicker: "Burger page", title: "<span class='script-word'>Boss</span><br>Burger", subtitle: "Big bite energy. Juicy, saucy and made to rule.", image: "assets/images/burgerr/burger.jpg", label: "Boss Burger", caption: "Classic burger, cheese burger, chicken burger and Elite Signature Burger." },
+      chicken: { kicker: "Chicken page", title: "<span class='script-word'>Crispy</span><br>Chicken Perfection", subtitle: "Served hot, fresh, and golden.", image: "assets/images/chickeen/main.jpg", label: "Elite Pandora Chicken Specials", caption: "Fried chicken, chicken & chips, wings, roasted chicken and combos." },
+      pastry: { kicker: "Pastries page", title: "<span class='script-word'>Fresh Pastries</span><br>Sweet Indulgence", subtitle: "Waffles, Doughnuts, Meat Pie & Brownies.", image: "assets/images/pastries/main.jpg", label: "Elite Pandora Pastry Collection", caption: "Fresh, sweet, rich, golden and ready for cravings." },
+      dessert: { kicker: "Dessert page", title: "<span class='script-word'>Pure Delight</span><br>In Every Spoon", subtitle: "Parfait, Greek Yoghurt & Cotton Candy.", image: "assets/images/desserts/main.jpg", label: "Desserts Made to Delight", caption: "Soft, sweet, luxe and paradise-level premium." },
+      gelato: { kicker: "Gelato page", title: "<span class='script-word'>Premium</span><br>Gelato Experience", subtitle: "6 Flavours of Luxury.", image: "assets/images/gelatos/main.jpg", label: "Elite Pandora Gelato Bar", caption: "Vanilla, strawberry, pistachio, chocolate, mango and berry." },
+      drink: { kicker: "Drinks page", title: "<span class='script-word'>Sip</span><br>The Luxury", subtitle: "Smoothies, Milkshakes, Fresh Juices & More.", image: "assets/images/drinkss/main.jpg", label: "Pandora Drinks Bar", caption: "Smoothies, juices and milkshakes with fresh fruit flavours." },
+      cocktail: { kicker: "Cocktail page", title: "<span class='script-word'>Cocktail</span><br>Paradise", subtitle: "Bold, chilled, colourful cocktail flavours.", image: "assets/images/drinkss/main.jpg", label: "Pandora Cocktail Bar", caption: "Classic, fruity, tropical and house cocktail options." },
+      mocktail: { kicker: "Mocktail page", title: "<span class='script-word'>Mocktail</span><br>Glow Bar", subtitle: "Fresh, fruity, alcohol-free luxury sips.", image: "assets/images/drinkss/main.jpg", label: "Pandora Mocktail Bar", caption: "Refreshing non-alcoholic drinks with tropical fruit flavours." },
+      signature: { kicker: "Elite signature drinks", title: "<span class='script-word'>Elite</span><br>Signature Drinks", subtitle: "Our special house drinks made for main-character cravings.", image: "assets/images/elite-signature/main.jpg", label: "Elite Signature Drinks", caption: "Exclusive Pandora drink mixes, smoothies and special house flavours." },
+      edibles: { kicker: "Edibles page", title: "<span class='script-word'>Black Box</span><br>Edibles", subtitle: "Brownies, gummies and EliteBlack Box.", image: "assets/images/edibless/main.jpg", label: "Black Box Edibles", caption: "Brownies, fruit gummies and special dessert treats." }
+    };
+
+    const products = [
+      { name: "Star Pizza", cat: "pizza", desc: "Cheesy pizza with chicken, beef, sausage, peppers and signature sauce.", price: "₦___", tags: ["Small", "Medium", "Large", "Extra cheese", "Spicy"] },
+      { name: "Elite Pizza Box", cat: "pizza", desc: "Signature pizza pack with promo options. Replace with your final offer rules.", price: "₦___", tags: ["Promo", "Elite party box", "Extra toppings"] },
+      { name: "Chicken Pizza", cat: "pizza", desc: "Chicken, cheese, peppers, onions and rich house sauce.", price: "₦___", tags: ["Chicken", "Extra cheese", "Sweet corn"] },
+      { name: "Elite Signature Shawarma", cat: "shawarma", desc: "Our special shawarma with chicken, beef, sausage, cheese, creamy sauce and spicy house drizzle.", price: "₦___", tags: ["Elite special", "Chicken + beef", "Extra sausage", "Cheese"] },
+      { name: "Chicken Shawarma", cat: "shawarma", desc: "Chicken shawarma with sausage, vegetables, creamy sauce and spice options.", price: "₦___", tags: ["Extra sausage", "Extra chicken", "Cheese", "Spicy"] },
+      { name: "Beef Shawarma", cat: "shawarma", desc: "Beef shawarma with sausage, veggies and creamy house sauce.", price: "₦___", tags: ["Beef", "Extra sausage", "Pepper sauce"] },
+      { name: "Mixed Shawarma", cat: "shawarma", desc: "Chicken and beef mixed wrap with creamy sauce and vegetables.", price: "₦___", tags: ["Chicken + beef", "Combo with fries", "Combo with drink"] },
+      { name: "Boss Burger", cat: "burger", desc: "Juicy burger with cheese, lettuce, tomato, onions and signature sauce.", price: "₦___", tags: ["Classic", "Cheese", "Saucy", "Single"] },
+      { name: "Elite Signature Burger", cat: "burger", desc: "Our special burger with double patty option, cheese, egg, extra sauce and premium toppings.", price: "₦___", tags: ["Elite special", "Double", "Extra cheese", "Premium"] },
+      { name: "Chicken Boss Burger", cat: "burger", desc: "Crispy chicken burger with creamy sauce, lettuce and soft bun.", price: "₦___", tags: ["Chicken", "Crispy", "Cheese", "Spicy option"] },
+      { name: "Burger Combo Box", cat: "burger", desc: "Burger with fries and drink. Replace with your final combo package.", price: "₦___", tags: ["Combo", "Fries", "Drink", "Elite box option"] },
+      { name: "Chicken & Chips", cat: "chicken", desc: "Crispy fried chicken served with fries and dipping sauce.", price: "₦___", tags: ["1 piece", "2 pieces", "4 pieces", "Family combo"] },
+      { name: "Roasted Chicken", cat: "chicken", desc: "Marinated roasted chicken with pepper sauce or BBQ glaze.", price: "₦___", tags: ["Mild", "Spicy", "BBQ", "Pepper sauce"] },
+      { name: "Chicken Wings", cat: "chicken", desc: "Golden wings with dipping sauce and optional fries.", price: "₦___", tags: ["BBQ", "Pepper", "Sweet chili"] },
+      { name: "Waffles", cat: "pastry", desc: "Warm waffles with syrup, fruits, chocolate or gelato topping.", price: "₦___", tags: ["Chocolate drizzle", "Strawberry", "Fruit topping", "Gelato topping"] },
+      { name: "Doughnuts", cat: "pastry", desc: "Soft glazed, filled or chocolate-topped doughnuts.", price: "₦___", tags: ["Glazed", "Chocolate", "Strawberry", "Sprinkles"] },
+      { name: "Meat Pie", cat: "pastry", desc: "Golden meat pie with rich savoury filling.", price: "₦___", tags: ["Regular", "Large", "Party order"] },
+      { name: "6-Flavour Gelato", cat: "gelato", desc: "Choose from six luxury gelato flavours.", price: "₦___", tags: ["Cup", "Cone", "Double scoop", "Mixed flavours"] },
+      { name: "Vanilla Bean Gelato", cat: "gelato", desc: "Classic creamy vanilla bean scoop.", price: "₦___", tags: ["Single scoop", "Double scoop", "Cup"] },
+      { name: "Chocolate Royale Gelato", cat: "gelato", desc: "Rich chocolate gelato with creamy luxury texture.", price: "₦___", tags: ["Chocolate syrup", "Nuts", "Cookie crumble"] },
+      { name: "Mango Passion Gelato", cat: "gelato", desc: "Fresh mango-inspired gelato flavour.", price: "₦___", tags: ["Fruit", "Tropical", "Cup"] },
+      { name: "Parfait", cat: "dessert", desc: "Greek yoghurt, granola, honey and fresh fruits.", price: "₦___", tags: ["Small", "Medium", "Large", "Extra granola", "Honey drizzle"] },
+      { name: "Greek Yoghurt", cat: "dessert", desc: "Thick creamy yoghurt served plain or with toppings.", price: "₦___", tags: ["Plain", "Fruit", "Granola", "Honey"] },
+      { name: "Cotton Candy", cat: "dessert", desc: "Sealed colourful cotton candy cups with a luxury look.", price: "₦___", tags: ["Pink", "Mixed colour", "Cup", "Elite party pack"] },
+      { name: "Smoothie", cat: "drink", desc: "Fruit and yoghurt blend with mango, banana, pineapple or berries.", price: "₦___", tags: ["Strawberry", "Berry mix", "Mango", "Tropical"] },
+      { name: "Fruit Juice", cat: "drink", desc: "Fresh fruit juice in rotating flavours.", price: "₦___", tags: ["Orange", "Pineapple", "Watermelon", "Mixed fruit"] },
+      { name: "Milkshake", cat: "drink", desc: "Thick creamy milkshake in classic flavours.", price: "₦___", tags: ["Vanilla", "Chocolate", "Strawberry", "Cookies & cream"] },
+      { name: "Classic Cocktail", cat: "cocktail", desc: "A bold chilled cocktail with fruit garnish and house flavour.", price: "₦___", tags: ["Classic", "Fruity", "Tropical", "Sweet"] },
+      { name: "Tropical Cocktail", cat: "cocktail", desc: "Bright tropical cocktail with citrus, fruit syrup and ice.", price: "₦___", tags: ["Pineapple", "Citrus", "Berry", "Ice cold"] },
+      { name: "House Mocktail", cat: "mocktail", desc: "Alcohol-free luxury sip with fresh fruit, mint and sparkle.", price: "₦___", tags: ["Alcohol-free", "Fruity", "Mint", "Fresh"] },
+      { name: "Berry Mocktail", cat: "mocktail", desc: "Refreshing berry mocktail with syrup, lemon and crushed ice.", price: "₦___", tags: ["Berry", "Lemon", "Sweet", "Chilled"] },
+      { name: "Elite Signature Drink", cat: "signature", desc: "Our special house drink made for out-of-this-world cravings.", price: "₦___", tags: ["Elite house mix", "Special", "Premium", "Signature"] },
+      { name: "Elite Smoothie Box", cat: "signature", desc: "A signature drink pack for smoothie lovers. Replace with your final offer.", price: "₦___", tags: ["Elite box", "Smoothie pack", "Custom flavours"] },
+      { name: "Margarita", cat: "cocktail", desc: "Classic or mocktail margarita with lime, syrup and ice.", price: "₦___", tags: ["Classic", "Frozen", "Mocktail", "Fruit twist"] },
+      { name: "Brownies", cat: "edibles", desc: "Rich chocolate brownies with optional drizzle and toppings.", price: "₦___", tags: ["Classic", "Chocolate drizzle", "Nuts", "Elite party box"] },
+      { name: "Fruit Gummies", cat: "edibles", desc: "Sweet fruit gummies and special candy treats.", price: "₦___", tags: ["Fruit mix", "Sour", "Sweet", "Gift pack"] },
+      { name: "EliteBlack Box", cat: "edibles", desc: "A luxury black box for brownies, gummies and special treats.", price: "₦___", tags: ["Elite box", "Elite party pack", "Gift box"] }
+    ];
+
+    const CART_KEY = "pandoraBoxDelightCart";
+
+    function getCart() { return JSON.parse(localStorage.getItem(CART_KEY) || "[]"); }
+    function saveCart(cart) { localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartCount(); }
+    function updateCartCount() { const count = getCart().reduce((sum, item) => sum + item.qty, 0); document.querySelectorAll("[data-cart-count]").forEach(el => el.textContent = count); }
+    function addToCart(name, qty) { const cart = getCart(); const existing = cart.find(item => item.name === name); if (existing) existing.qty += qty; else cart.push({ name, qty }); saveCart(cart); alert(name + " added to order list"); }
+    function removeFromCart(index) { const cart = getCart(); cart.splice(index, 1); saveCart(cart); renderCart(); }
+    function clearCart() { saveCart([]); renderCart(); }
+
+    function renderCart() {
+      const box = document.querySelector("#cartItems");
+      const summary = document.querySelector("#orderSummaryText");
+      if (!box) return;
+      const cart = getCart();
+      if (!cart.length) { box.innerHTML = "<p>Your order list is empty. Go to the menu and add items.</p>"; if (summary) summary.value = ""; updateCartCount(); return; }
+      box.innerHTML = cart.map((item, index) => `<div class="cart-item"><div><strong>${item.name}</strong><p>Qty: ${item.qty}</p></div><button class="filter" onclick="removeFromCart(${index})">Remove</button></div>`).join("");
+      if (summary) summary.value = cart.map(item => `${item.qty} x ${item.name}`).join("\n");
+      updateCartCount();
+    }
+
+    function renderHero(filter) {
+      const info = categoryInfo[filter] || categoryInfo.all;
+      document.querySelector("#menuHeroText").innerHTML = `<p class="kicker">${info.kicker}</p><h1>${info.title}</h1><p>${info.subtitle}</p><div class="option-list" id="heroOptions"></div><div class="actions"><button class="btn primary" onclick="showPage('cart')">View Order List</button><button class="btn secondary" onclick="showPage('checkout')">Checkout</button></div>`;
+      document.querySelector("#menuHeroImg").src = info.image;
+      document.querySelector("#menuHeroImg").alt = info.label;
+      document.querySelector("#menuHeroLabel").textContent = info.label;
+      document.querySelector("#menuHeroCaption").textContent = info.caption;
+      const selected = products.filter(p => filter === "all" ? false : p.cat === filter).slice(0, 4);
+      const heroOptions = document.querySelector("#heroOptions");
+      if (!selected.length) { heroOptions.innerHTML = `<div class="option-box"><strong>Pizza</strong><br>Sizes, toppings and promos</div><div class="option-box"><strong>Drinks</strong><br>Smoothies, juices and cocktails</div><div class="option-box"><strong>Desserts</strong><br>Gelato, parfait and cotton candy</div><div class="option-box"><strong>Edibles</strong><br>Brownies, gummies and sweet specials</div>`; return; }
+      heroOptions.innerHTML = selected.map(p => `<div class="option-box"><strong>${p.name}</strong><br>${p.tags.slice(0, 3).join(" • ")}</div>`).join("");
+    }
+
+    function renderMenu(filter = "all") {
+      const grid = document.querySelector("#menuGrid");
+      if (!grid) return;
+      renderHero(filter);
+const list = filter === "all" ? products : products.filter(p => p.cat === filter);
+      grid.innerHTML = list.map((p, index) => `<article class="product-card"><h3>${p.name}</h3><p>${p.desc}</p><div class="taglist"><span class="tag">${p.cat}</span><span class="tag">${p.price}</span>${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div><div class="qtyrow"><input type="number" min="1" value="1" id="qty-${filter}-${index}"><button class="addbtn" onclick="addToCart('${p.name.replace(/'/g, "\\'")}', Math.max(1, parseInt(document.querySelector('#qty-${filter}-${index}').value || '1')))" >Add to order</button></div></article>`).join("");
+    }
+
+    function filterMenu(filter, btn) { document.querySelectorAll(".filter").forEach(b => b.classList.remove("active")); if (btn) btn.classList.add("active"); renderMenu(filter); }
+    function showCategory(category) { showPage("menu"); setTimeout(() => { const buttons = [...document.querySelectorAll(".filter")]; const btn = buttons.find(b => b.textContent.toLowerCase().includes(category)); filterMenu(category, btn); }, 0); }
+    function showPage(page) { document.querySelectorAll(".page").forEach(p => p.classList.remove("active")); const target = document.querySelector("#page-" + page); if (target) target.classList.add("active"); document.querySelector("#mainNav")?.classList.remove("open"); window.scrollTo({ top: 0, behavior: "smooth" }); if (page === "menu") renderMenu("all"); if (page === "cart" || page === "checkout") renderCart(); }
+
+    function openWhatsApp(text) {
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+    }
+
+    function sendWhatsAppOrder() {
+      const cart = getCart();
+      if (!cart.length) { alert("Please add items before sending order."); return; }
+      const name = document.querySelector("#customerName")?.value || "";
+      const phone = document.querySelector("#customerPhone")?.value || "";
+      const address = document.querySelector("#customerAddress")?.value || "";
+      const payment = document.querySelector("#paymentMethod")?.value || "";
+      const notes = document.querySelector("#customerNotes")?.value || "";
+      const items = cart.map(item => `- ${item.qty} x ${item.name}`).join("%0A");
+      const message = `Hello Pandora Box Delight,%0AI want to place an order.%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AAddress: ${encodeURIComponent(address)}%0APayment: ${encodeURIComponent(payment)}%0A%0AItems:%0A${items}%0A%0ANotes: ${encodeURIComponent(notes)}`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
+    }
+
+    function quickBotAnswer() {
+      const input = document.querySelector("#botInput");
+      const box = document.querySelector("#botMessages");
+      if (!input || !box || !input.value.trim()) return;
+      const q = input.value.trim();
+      box.insertAdjacentHTML("beforeend", `<div class="msg me">${q}</div>`);
+      let reply = "Thanks love. You can order from the menu, add items to your order list, or continue to checkout.";
+      const lower = q.toLowerCase();
+      if (lower.includes("price")) reply = "Prices are placeholders now. Replace every ₦___ with your real price before launch.";
+      if (lower.includes("pizza")) reply = "Star Pizza includes size, toppings and extra cheese. The special pizza pack is called Elite Pizza Box.";
+      if (lower.includes("shawarma")) reply = "Golden Shawarma Wraps include Elite Signature Shawarma, chicken, beef, mixed combo, extra sausage, cheese and spicy options.";
+      if (lower.includes("delivery")) reply = "Delivery depends on customer location. Add address at checkout or confirm on WhatsApp.";
+      if (lower.includes("open") || lower.includes("time")) reply = "Opening hours can be changed. Current placeholder is 10:00 AM - 10:00 PM.";
+      if (lower.includes("payment") || lower.includes("pay")) reply = "Payment options include cash/pickup, bank transfer, Flutterwave, Paystack, home delivery with extra charge, BTC/manual and gift card/manual placeholders.";
+      if (lower.includes("edibles") || lower.includes("brownies") || lower.includes("gummies")) reply = "The Black Box Edibles page includes brownies, gummies and EliteBlack Box specials. Keep all ingredients legal and replace items/prices with your final menu.";
+      box.insertAdjacentHTML("beforeend", `<div class="msg">${reply}</div>`);
+      document.querySelectorAll('.ai-chat-avatar').forEach(img => { img.style.transform = "scale(1.1)"; setTimeout(() => img.style.transform = "", 350); });
+      input.value = "";
+      box.scrollTop = box.scrollHeight;
+    }
+
+    document.querySelector("#menuToggle")?.addEventListener("click", () => document.querySelector("#mainNav")?.classList.toggle("open"));
+    document.querySelector("#year").textContent = new Date().getFullYear();
+    renderMenu("all");
+    renderCart();
+    updateCartCount();
+  
+    document.addEventListener("error", function(e) {
+      const img = e.target;
+      if (!img || img.tagName !== "IMG" || img.dataset.fallbackDone) return;
+      const src = img.getAttribute("src") || "";
+      const fallbackMap = {
+        "assets/images/pizza/": "assets/images/pizza.jpg",
+        "assets/images/shawarmaa/": "assets/images/shawarma.jpg",
+        "assets/images/shawarma/": "assets/images/shawarma.jpg",
+        "assets/images/burgerr/": "assets/images/burger.jpg",
+        "assets/images/burger/": "assets/images/burger.jpg",
+        "assets/images/chickeen/": "assets/images/chicken.jpg",
+        "assets/images/chicken/": "assets/images/chicken.jpg",
+        "assets/images/pastries/": "assets/images/pastries.jpg",
+        "assets/images/desserts/": "assets/images/dessert.jpg",
+        "assets/images/dessert/": "assets/images/dessert.jpg",
+        "assets/images/gelatos/": "assets/images/gelato.jpg",
+        "assets/images/gelato/": "assets/images/gelato.jpg",
+        "assets/images/drinkss/": "assets/images/drinks.jpg",
+        "assets/images/drinks/": "assets/images/drinks.jpg",
+        "assets/images/cocktails/": "assets/images/drinks.jpg",
+        "assets/images/mocktails/": "assets/images/drinks.jpg",
+        "assets/images/elite-signature/": "assets/images/smoothie.jpg",
+        "assets/images/signature/": "assets/images/smoothie.jpg",
+        "assets/images/edibless/": "assets/images/edibles.jpg",
+        "assets/images/edibles/": "assets/images/edibles.jpg",
+        "assets/images/home-combo/": "assets/images/pizza.jpg"
+      };
+      for (const key in fallbackMap) {
+        if (src.includes(key)) {
+          img.dataset.fallbackDone = "1";
+          img.src = fallbackMap[key];
+          return;
+        }
+      }
+    }, true);
+
+  </script>
 </body>
 </html>
