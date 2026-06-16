@@ -1755,6 +1755,168 @@
 .combo-tile,.combo-main,.combo-shawarma,.combo-smoothie,.combo-gelato,.combo-chicken,.combo-pastries,.combo-dessert,.page-gallery-card,.page-gallery-card.art-main,.page-gallery-card.art-top,.page-gallery-card.art-mid,.page-gallery-card.art-bottom,.edibles-luxury-layout .page-gallery-card:nth-child(1),.edibles-luxury-layout .page-gallery-card:nth-child(2),.edibles-luxury-layout .edibles-luxury-main{height:215px!important;min-height:215px!important}
 }
 
+
+/* ===== PANDORA FINAL ARTISTIC DESIGN FIX ===== */
+.home-art-scene{
+  position:relative;
+  min-height:680px;
+  width:100%;
+  margin:8px 0 0;
+  border-radius:48px;
+  overflow:hidden;
+  isolation:isolate;
+  border:1px solid rgba(255,255,255,.14);
+  background:
+    radial-gradient(circle at 18% 20%,rgba(255,79,195,.23),transparent 32%),
+    radial-gradient(circle at 78% 30%,rgba(255,209,102,.18),transparent 34%),
+    radial-gradient(circle at 48% 82%,rgba(255,255,255,.08),transparent 30%),
+    linear-gradient(135deg,rgba(20,5,24,.72),rgba(3,2,5,.85));
+  box-shadow:var(--shadow);
+}
+.home-art-scene:before{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background:
+    linear-gradient(115deg,transparent 0 44%,rgba(255,255,255,.07) 45%,transparent 51%),
+    radial-gradient(circle at center,transparent 0 54%,rgba(0,0,0,.78) 100%);
+  z-index:1;
+  pointer-events:none;
+}
+.glow-ring{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(255,209,102,.32);
+  box-shadow:0 0 60px rgba(255,79,195,.16), inset 0 0 40px rgba(255,209,102,.08);
+  z-index:2;
+}
+.glow-ring.one{width:300px;height:300px;left:34%;top:18%;transform:rotate(-18deg)}
+.glow-ring.two{width:170px;height:170px;right:14%;bottom:12%;transform:rotate(25deg)}
+.spark-dot{
+  position:absolute;
+  width:10px;height:10px;border-radius:999px;
+  background:linear-gradient(135deg,var(--gold),var(--pink));
+  box-shadow:0 0 22px rgba(255,79,195,.8);
+  z-index:4;
+}
+.spark-dot.d1{left:58%;top:16%}.spark-dot.d2{left:30%;bottom:18%}.spark-dot.d3{right:18%;top:50%}
+.food-piece{
+  position:absolute;
+  margin:0;
+  overflow:hidden;
+  border-radius:34px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(0,0,0,.35);
+  box-shadow:0 25px 70px rgba(0,0,0,.44),0 0 35px rgba(255,79,195,.12);
+  z-index:5;
+  transform:rotate(var(--rot,0deg));
+  transition:.35s ease;
+}
+.food-piece:hover{transform:translateY(-9px) rotate(var(--rot,0deg)) scale(1.025)}
+.food-piece img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.09) contrast(1.05)}
+.food-piece:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.84),rgba(0,0,0,.12) 56%,transparent);
+  z-index:2;
+}
+.food-piece figcaption{
+  position:absolute;
+  left:16px;right:16px;bottom:14px;
+  z-index:3;
+}
+.food-piece figcaption span{
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-size:.68rem;
+  font-weight:900;
+}
+.food-piece figcaption strong{
+  display:block;
+  color:var(--cream);
+  font-family:"Playfair Display",serif;
+  font-size:clamp(1rem,1.5vw,1.4rem);
+}
+.hero-piece{width:44%;height:48%;left:7%;top:12%;border-radius:46px;--rot:-3deg;z-index:8}
+.hero-piece figcaption strong{font-size:clamp(1.55rem,2.5vw,2.25rem)}
+.shawarma-piece{width:32%;height:28%;right:8%;top:7%;--rot:5deg;z-index:7}
+.smoothie-piece{width:23%;height:30%;right:6%;top:38%;border-radius:999px 999px 34px 34px;--rot:-6deg;z-index:9}
+.gelato-piece{width:27%;height:25%;left:40%;top:42%;--rot:7deg;z-index:10;border-color:rgba(255,209,102,.34)}
+.chicken-piece{width:31%;height:28%;left:6%;bottom:7%;--rot:5deg;z-index:7}
+.pastry-piece{width:25%;height:24%;left:37%;bottom:6%;--rot:-5deg;z-index:8}
+.dessert-piece{width:26%;height:25%;right:8%;bottom:7%;border-radius:34px 999px 34px 999px;--rot:4deg;z-index:7}
+
+.category-art-scene{
+  position:relative;
+  min-height:590px;
+  margin:28px 0 34px;
+  border-radius:44px;
+  overflow:hidden;
+  isolation:isolate;
+  border:1px solid rgba(255,255,255,.13);
+  background:
+    radial-gradient(circle at 22% 18%,rgba(255,79,195,.18),transparent 34%),
+    radial-gradient(circle at 76% 74%,rgba(255,209,102,.16),transparent 32%),
+    linear-gradient(135deg,rgba(20,5,24,.62),rgba(0,0,0,.62));
+  box-shadow:var(--shadow);
+}
+.scene-glow{
+  position:absolute;
+  width:260px;height:260px;border-radius:50%;
+  left:46%;top:24%;
+  border:1px solid rgba(255,209,102,.25);
+  box-shadow:0 0 80px rgba(255,79,195,.15), inset 0 0 45px rgba(255,209,102,.08);
+  z-index:1;
+}
+.cat-piece{
+  position:absolute;
+  margin:0;
+  overflow:hidden;
+  border-radius:32px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(0,0,0,.34);
+  box-shadow:0 22px 60px rgba(0,0,0,.42),0 0 34px rgba(255,79,195,.10);
+  z-index:5;
+  transform:rotate(var(--rot,0deg));
+  transition:.35s ease;
+}
+.cat-piece:hover{transform:translateY(-7px) rotate(var(--rot,0deg)) scale(1.02)}
+.cat-piece img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.08) contrast(1.04)}
+.cat-piece:after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.83),rgba(0,0,0,.14) 56%,transparent);
+  z-index:2;
+}
+.cat-piece figcaption{position:absolute;left:16px;right:16px;bottom:14px;z-index:3}
+.cat-piece figcaption span{display:block;color:var(--gold);text-transform:uppercase;letter-spacing:1.4px;font-size:.68rem;font-weight:900}
+.cat-piece figcaption strong{display:block;color:var(--cream);font-family:"Playfair Display",serif;font-size:clamp(1.05rem,1.7vw,1.55rem)}
+.main-food{width:47%;height:68%;left:6%;top:10%;border-radius:44px;--rot:-3deg;z-index:8}
+.top-food{width:34%;height:31%;right:8%;top:7%;--rot:5deg;z-index:7}
+.middle-food{width:29%;height:31%;right:5%;top:39%;--rot:-6deg;z-index:9}
+.bottom-food{width:38%;height:28%;right:13%;bottom:7%;--rot:4deg;z-index:7}
+.edibles-art-scene .edible-brownie{width:33%;height:38%;left:7%;top:10%;--rot:-5deg}
+.edibles-art-scene .edible-gummy{width:30%;height:35%;left:13%;bottom:9%;--rot:5deg;z-index:8}
+.edibles-art-scene .edible-box{width:52%;height:72%;right:6%;top:13%;border-radius:46px;--rot:2deg;z-index:9;border-color:rgba(255,209,102,.32)}
+.edibles-art-scene .edible-box p{color:var(--champagne);font-weight:900;text-shadow:0 0 14px rgba(255,209,102,.54);margin-top:8px}
+
+@media(max-width:980px){
+  .home-art-scene,.category-art-scene{min-height:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;overflow:visible}
+  .glow-ring,.spark-dot,.scene-glow{display:none}
+  .food-piece,.cat-piece,.hero-piece,.shawarma-piece,.smoothie-piece,.gelato-piece,.chicken-piece,.pastry-piece,.dessert-piece,
+  .main-food,.top-food,.middle-food,.bottom-food,.edibles-art-scene .edible-brownie,.edibles-art-scene .edible-gummy,.edibles-art-scene .edible-box{
+    position:relative;inset:auto;left:auto;right:auto;top:auto;bottom:auto;width:100%;height:230px;min-height:230px;transform:none;border-radius:28px;
+  }
+  .hero-piece,.main-food,.edibles-art-scene .edible-box{grid-column:span 2;height:300px}
+}
+@media(max-width:560px){
+  .home-art-scene,.category-art-scene{grid-template-columns:1fr;padding:10px}
+  .hero-piece,.main-food,.edibles-art-scene .edible-box{grid-column:span 1}
+  .food-piece,.cat-piece,.hero-piece,.main-food,.edibles-art-scene .edible-box{height:215px;min-height:215px}
+}
+
 </style>
 </head>
 
@@ -1798,8 +1960,7 @@
           <p class="kicker glow-writeup">Welcome to the box of delight, bae 😊</p>
           <h1 class="glow-headline"><span class="script-word">Luxury bites,</span><br>that will take you to Mars.</h1>
           <p>
-            Welcome to Pandora Box Delight — your taste buds’ first-class ticket
-            to absolute delight.
+            Welcome to Pandora Box Delight — your taste buds’ first-class ticket to absolute delight.
             We are your NUMBER 1 go-to plug for the best pizza, shawarma, waffles, doughnuts,
             burgers, gelato, smoothies, cocktails, parfait, Greek yoghurt and cotton candy.
           </p>
@@ -1824,43 +1985,47 @@
           </div>
         </div>
 
-        <div class="home-collage" aria-label="Pandora Box Delight artistic food collage">
-          <div class="combo-orbit" aria-hidden="true"></div>
+        <div class="home-art-scene" aria-label="Pandora Box Delight artistic floating food design">
+          <div class="glow-ring one"></div>
+          <div class="glow-ring two"></div>
+          <div class="spark-dot d1"></div>
+          <div class="spark-dot d2"></div>
+          <div class="spark-dot d3"></div>
 
-          <div class="combo-tile combo-main">
-            <img src="assets/images/pizza.jpg" alt="Fresh Star Pizza">
-            <div class="label"><span>star of the box</span><strong>Hot Star Pizza</strong></div>
-          </div>
+          <figure class="food-piece hero-piece pizza-piece">
+            <img src="assets/images/pizza.jpg" alt="Star Pizza">
+            <figcaption><span>star of the box</span><strong>Star Pizza</strong></figcaption>
+          </figure>
 
-          <div class="combo-tile combo-shawarma">
-            <img src="assets/images/shawarma.jpg" alt="Golden shawarma wraps">
-            <div class="label"><span>signature wrap</span><strong>Golden Shawarma</strong></div>
-          </div>
+          <figure class="food-piece shawarma-piece">
+            <img src="assets/images/shawarma.jpg" alt="Golden Shawarma">
+            <figcaption><span>signature wrap</span><strong>Golden Shawarma</strong></figcaption>
+          </figure>
 
-          <div class="combo-tile combo-smoothie">
-            <img src="assets/images/smoothie.jpg" alt="Smoothie drink">
-            <div class="label"><span>sip the luxury</span><strong>Elite Smoothies</strong></div>
-          </div>
+          <figure class="food-piece smoothie-piece">
+            <img src="assets/images/smoothie.jpg" alt="Elite Smoothie">
+            <figcaption><span>sip glow</span><strong>Elite Smoothie</strong></figcaption>
+          </figure>
 
-          <div class="combo-tile combo-gelato">
-            <img src="assets/images/gelato.jpg" alt="Premium gelato">
-            <div class="label"><span>cold luxury</span><strong>6-Flavour Gelato</strong></div>
-          </div>
+          <figure class="food-piece gelato-piece">
+            <img src="assets/images/gelato.jpg" alt="Six flavour gelato">
+            <figcaption><span>cold luxury</span><strong>Gelato</strong></figcaption>
+          </figure>
 
-          <div class="combo-tile combo-chicken">
+          <figure class="food-piece chicken-piece">
             <img src="assets/images/chicken.jpg" alt="Crispy chicken">
-            <div class="label"><span>golden crunch</span><strong>Crispy Chicken</strong></div>
-          </div>
+            <figcaption><span>golden crunch</span><strong>Chicken</strong></figcaption>
+          </figure>
 
-          <div class="combo-tile combo-pastries">
-            <img src="assets/images/pastries.jpg" alt="Pastries">
-            <div class="label"><span>fresh indulgence</span><strong>Pastries & Treats</strong></div>
-          </div>
+          <figure class="food-piece pastry-piece">
+            <img src="assets/images/pastries.jpg" alt="Pastries and treats">
+            <figcaption><span>fresh indulgence</span><strong>Pastries</strong></figcaption>
+          </figure>
 
-          <div class="combo-tile combo-dessert">
-            <img src="assets/images/dessert.jpg" alt="Desserts and parfait">
-            <div class="label"><span>sweet finish</span><strong>Dessert Glow</strong></div>
-          </div>
+          <figure class="food-piece dessert-piece">
+            <img src="assets/images/dessert.jpg" alt="Dessert glow">
+            <figcaption><span>sweet finish</span><strong>Dessert</strong></figcaption>
+          </figure>
         </div>
 
       </div>
