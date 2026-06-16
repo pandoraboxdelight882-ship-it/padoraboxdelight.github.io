@@ -1701,7 +1701,61 @@
       }
     }
 
-  </style>
+  
+/* ===== FINAL ARTISTIC IMAGE LAYOUT OVERRIDE ===== */
+.home-collage{position:relative!important;display:block!important;min-height:640px!important;margin-top:10px!important;border-radius:42px!important;border:1px solid rgba(255,255,255,.14)!important;background:radial-gradient(circle at 18% 18%,rgba(255,79,195,.20),transparent 34%),radial-gradient(circle at 78% 28%,rgba(255,209,102,.16),transparent 30%),rgba(255,255,255,.035)!important;box-shadow:var(--shadow)!important;overflow:hidden!important;isolation:isolate}
+.home-collage:before{content:"";position:absolute;inset:-80px;background:linear-gradient(115deg,transparent 0 45%,rgba(255,255,255,.06) 46%,transparent 53%),radial-gradient(circle at center,transparent 0 58%,rgba(0,0,0,.72) 100%);pointer-events:none;z-index:2}
+.combo-tile{position:absolute!important;overflow:hidden!important;border:1px solid rgba(255,255,255,.18)!important;background:rgba(12,4,14,.65)!important;box-shadow:0 22px 65px rgba(0,0,0,.42),0 0 34px rgba(255,79,195,.10)!important;isolation:isolate;transition:.35s ease}
+.combo-tile:hover{transform:translateY(-8px) rotate(var(--r,0deg)) scale(1.025)!important}
+.combo-tile img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;filter:saturate(1.1) contrast(1.04)}
+.combo-tile:after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,.12) 58%,transparent)}
+.combo-tile .label{position:absolute;left:15px;right:15px;bottom:14px;z-index:3}
+.combo-tile .label span{color:var(--gold);font-weight:900;letter-spacing:1.4px;text-transform:uppercase;font-size:.68rem;text-shadow:0 0 12px rgba(255,209,102,.45)}
+.combo-tile .label strong{display:block;font-family:"Playfair Display",serif;font-size:clamp(1rem,1.5vw,1.38rem);color:var(--cream);margin-top:4px}
+.combo-main{width:48%!important;height:52%!important;left:7%!important;top:10%!important;border-radius:42px!important;--r:-2deg;transform:rotate(-2deg)!important;z-index:4}
+.combo-main .label strong{font-size:clamp(1.45rem,2.6vw,2.1rem)}
+.combo-shawarma{width:34%!important;height:31%!important;right:7%!important;top:6%!important;border-radius:34px!important;--r:4deg;transform:rotate(4deg)!important;z-index:5}
+.combo-smoothie{width:26%!important;height:30%!important;right:4%!important;top:39%!important;border-radius:999px 999px 32px 32px!important;--r:-5deg;transform:rotate(-5deg)!important;z-index:7}
+.combo-gelato{width:28%!important;height:27%!important;left:39%!important;top:43%!important;border-radius:38px!important;--r:7deg;transform:rotate(7deg)!important;z-index:8;border-color:rgba(255,209,102,.32)!important}
+.combo-chicken{width:32%!important;height:29%!important;left:5%!important;bottom:6%!important;border-radius:34px!important;--r:5deg;transform:rotate(5deg)!important;z-index:6}
+.combo-pastries{width:27%!important;height:25%!important;left:35%!important;bottom:5%!important;border-radius:34px!important;--r:-4deg;transform:rotate(-4deg)!important;z-index:7}
+.combo-dessert{width:27%!important;height:26%!important;right:7%!important;bottom:6%!important;border-radius:34px 999px 34px 999px!important;--r:3deg;transform:rotate(3deg)!important;z-index:6}
+.combo-orbit{position:absolute;width:130px;height:130px;left:58%;top:20%;border:1px solid rgba(255,209,102,.35);border-radius:50%;z-index:3;box-shadow:0 0 45px rgba(255,209,102,.12)}
+.combo-orbit:before,.combo-orbit:after{content:"";position:absolute;border-radius:999px;background:linear-gradient(135deg,var(--gold),var(--pink));box-shadow:0 0 24px rgba(255,79,195,.5)}
+.combo-orbit:before{width:12px;height:12px;left:12px;top:20px}.combo-orbit:after{width:8px;height:8px;right:20px;bottom:18px}
+
+.page-gallery{position:relative!important;display:block!important;min-height:560px!important;margin:28px 0 34px!important;border-radius:38px!important;background:radial-gradient(circle at 22% 18%,rgba(255,79,195,.16),transparent 35%),radial-gradient(circle at 74% 72%,rgba(255,209,102,.14),transparent 34%),rgba(255,255,255,.035)!important;border:1px solid rgba(255,255,255,.12)!important;box-shadow:var(--shadow)!important;overflow:hidden!important}
+.page-gallery-card{position:absolute!important;overflow:hidden!important;border-radius:30px!important;border:1px solid rgba(255,255,255,.16)!important;background:rgba(0,0,0,.28)!important;box-shadow:0 20px 55px rgba(0,0,0,.38)!important;transition:.35s ease}
+.page-gallery-card:hover{transform:translateY(-7px) rotate(var(--rot,0deg)) scale(1.02)!important}
+.page-gallery-card img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.08) contrast(1.03)}
+.page-gallery-card:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,.16) 55%,transparent);z-index:2}
+.page-gallery-card .gallery-label{position:absolute;left:16px;right:16px;bottom:15px;z-index:3}
+.page-gallery-card .gallery-label span{display:block;color:var(--gold);text-transform:uppercase;letter-spacing:1.4px;font-size:.68rem;font-weight:900}
+.page-gallery-card .gallery-label strong{display:block;color:var(--cream);font-family:"Playfair Display",serif;font-size:clamp(1.05rem,1.7vw,1.45rem);margin-top:4px}
+.page-gallery-card.art-main{width:48%!important;height:68%!important;left:5%!important;top:10%!important;--rot:-2deg;transform:rotate(-2deg)!important;border-radius:42px!important;z-index:4}
+.page-gallery-card.art-top{width:34%!important;height:31%!important;right:7%!important;top:6%!important;--rot:4deg;transform:rotate(4deg)!important;z-index:5}
+.page-gallery-card.art-mid{width:30%!important;height:31%!important;right:4%!important;top:39%!important;--rot:-5deg;transform:rotate(-5deg)!important;z-index:7}
+.page-gallery-card.art-bottom{width:37%!important;height:28%!important;right:13%!important;bottom:6%!important;--rot:3deg;transform:rotate(3deg)!important;z-index:6}
+
+.edibles-luxury-layout{position:relative!important;display:block!important;min-height:590px!important;margin:28px 0 34px!important;border-radius:38px!important;border:1px solid rgba(255,255,255,.12)!important;background:radial-gradient(circle at 70% 28%,rgba(255,79,195,.18),transparent 32%),radial-gradient(circle at 30% 76%,rgba(255,209,102,.16),transparent 34%),rgba(255,255,255,.035)!important;overflow:hidden!important;box-shadow:var(--shadow)!important}
+.edibles-luxury-layout .page-gallery-card:nth-child(1){width:34%!important;height:38%!important;left:6%!important;top:9%!important;transform:rotate(-5deg)!important;z-index:5}
+.edibles-luxury-layout .page-gallery-card:nth-child(2){width:30%!important;height:35%!important;left:12%!important;bottom:9%!important;transform:rotate(5deg)!important;z-index:6}
+.edibles-luxury-layout .edibles-luxury-main{width:52%!important;height:72%!important;right:6%!important;top:13%!important;transform:rotate(2deg)!important;border-radius:42px!important;z-index:7;border-color:rgba(255,209,102,.28)!important}
+.edibles-note-glow{color:var(--champagne);text-shadow:0 0 10px rgba(255,209,102,.58),0 0 24px rgba(255,79,195,.35);font-weight:900;margin-top:8px}
+
+@media(max-width:980px){
+.home-collage,.page-gallery,.edibles-luxury-layout{min-height:auto!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important;padding:12px!important;overflow:visible!important}
+.combo-orbit{display:none!important}
+.combo-tile,.combo-main,.combo-shawarma,.combo-smoothie,.combo-gelato,.combo-chicken,.combo-pastries,.combo-dessert,.page-gallery-card,.page-gallery-card.art-main,.page-gallery-card.art-top,.page-gallery-card.art-mid,.page-gallery-card.art-bottom,.edibles-luxury-layout .page-gallery-card:nth-child(1),.edibles-luxury-layout .page-gallery-card:nth-child(2),.edibles-luxury-layout .edibles-luxury-main{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%!important;height:230px!important;min-height:230px!important;transform:none!important;border-radius:28px!important}
+.combo-main,.page-gallery-card.art-main,.edibles-luxury-layout .edibles-luxury-main{grid-column:span 2!important;height:300px!important}
+}
+@media(max-width:560px){
+.home-collage,.page-gallery,.edibles-luxury-layout{grid-template-columns:1fr!important;padding:10px!important}
+.combo-main,.page-gallery-card.art-main,.edibles-luxury-layout .edibles-luxury-main{grid-column:span 1!important}
+.combo-tile,.combo-main,.combo-shawarma,.combo-smoothie,.combo-gelato,.combo-chicken,.combo-pastries,.combo-dessert,.page-gallery-card,.page-gallery-card.art-main,.page-gallery-card.art-top,.page-gallery-card.art-mid,.page-gallery-card.art-bottom,.edibles-luxury-layout .page-gallery-card:nth-child(1),.edibles-luxury-layout .page-gallery-card:nth-child(2),.edibles-luxury-layout .edibles-luxury-main{height:215px!important;min-height:215px!important}
+}
+
+</style>
 </head>
 
 <body>
@@ -1744,7 +1798,8 @@
           <p class="kicker glow-writeup">Welcome to the box of delight, bae 😊</p>
           <h1 class="glow-headline"><span class="script-word">Luxury bites,</span><br>that will take you to Mars.</h1>
           <p>
-            Welcome to Pandora Box Delight — your taste buds luxury food trip to absolute delight.
+            Welcome to Pandora Box Delight — your taste buds’ first-class ticket
+            to absolute delight.
             We are your NUMBER 1 go-to plug for the best pizza, shawarma, waffles, doughnuts,
             burgers, gelato, smoothies, cocktails, parfait, Greek yoghurt and cotton candy.
           </p>
@@ -1769,61 +1824,42 @@
           </div>
         </div>
 
-        <div class="home-collage" aria-label="Pandora Box Delight homepage food collage">
+        <div class="home-collage" aria-label="Pandora Box Delight artistic food collage">
+          <div class="combo-orbit" aria-hidden="true"></div>
+
           <div class="combo-tile combo-main">
             <img src="assets/images/pizza.jpg" alt="Fresh Star Pizza">
-            <div class="label">
-              <span>star of the box</span>
-              <strong>Hot Star Pizza</strong>
-            </div>
+            <div class="label"><span>star of the box</span><strong>Hot Star Pizza</strong></div>
           </div>
 
-          <div class="combo-tile">
+          <div class="combo-tile combo-shawarma">
             <img src="assets/images/shawarma.jpg" alt="Golden shawarma wraps">
-            <div class="label">
-              <span>signature wrap</span>
-              <strong>Golden Shawarma</strong>
-            </div>
+            <div class="label"><span>signature wrap</span><strong>Golden Shawarma</strong></div>
           </div>
 
-          <div class="combo-tile">
+          <div class="combo-tile combo-smoothie">
             <img src="assets/images/smoothie.jpg" alt="Smoothie drink">
-            <div class="label">
-              <span>sip the luxury</span>
-              <strong>Elite Smoothies</strong>
-            </div>
+            <div class="label"><span>sip the luxury</span><strong>Elite Smoothies</strong></div>
           </div>
 
-          <div class="combo-tile combo-float">
+          <div class="combo-tile combo-gelato">
             <img src="assets/images/gelato.jpg" alt="Premium gelato">
-            <div class="label">
-              <span>cold luxury</span>
-              <strong>6-Flavour Gelato</strong>
-            </div>
+            <div class="label"><span>cold luxury</span><strong>6-Flavour Gelato</strong></div>
           </div>
 
-          <div class="combo-tile">
+          <div class="combo-tile combo-chicken">
             <img src="assets/images/chicken.jpg" alt="Crispy chicken">
-            <div class="label">
-              <span>golden crunch</span>
-              <strong>Crispy Chicken</strong>
-            </div>
+            <div class="label"><span>golden crunch</span><strong>Crispy Chicken</strong></div>
           </div>
 
-          <div class="combo-tile">
+          <div class="combo-tile combo-pastries">
             <img src="assets/images/pastries.jpg" alt="Pastries">
-            <div class="label">
-              <span>fresh indulgence</span>
-              <strong>Pastries & Treats</strong>
-            </div>
+            <div class="label"><span>fresh indulgence</span><strong>Pastries & Treats</strong></div>
           </div>
 
-          <div class="combo-tile combo-wide">
+          <div class="combo-tile combo-dessert">
             <img src="assets/images/dessert.jpg" alt="Desserts and parfait">
-            <div class="label">
-              <span>sweet finish</span>
-              <strong>Parfait, Greek Yoghurt & Cotton Candy</strong>
-            </div>
+            <div class="label"><span>sweet finish</span><strong>Dessert Glow</strong></div>
           </div>
         </div>
 
@@ -1832,7 +1868,7 @@
       <section class="container section">
         <div class="section-head">
           <p class="kicker glow-writeup">Pick your cravings rocket 🚀</p>
-          <h2 class="glow-headline"><span class="script-word">Cravings</span> with out-of-this-world cravings</h2>
+          <h2 class="glow-headline"><span class="script-word">Cravings</span> that give you out-of-this-world experience</h2>
           <p>Each category has its own luxury mini page with distinguished recipes, flavours, toppings and add-ons — so <strong><em>my elite consumer, that’s you boo</em> 💕</strong> can pick their exact mood.</p>
         </div>
 
